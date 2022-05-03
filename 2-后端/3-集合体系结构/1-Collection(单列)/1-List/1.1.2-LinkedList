@@ -1,0 +1,11 @@
+----------------------------------------------------------------------
+LinkedList<int>  h =  new LinkedList<int>()
+
+
+LinkedList 特有功能:
+void addFirst (E e)      在该链表开头插入指定的元素
+void addLast(E e)        将指定的元素追加到此链表的末尾
+E    getFirst()          返回此列表中的第一个元素
+E    getLast()          返回此列表中的最后一个元素
+E    removeFirst()       删除第一个元素
+E    removeLast()       删除最后一个元素

@@ -1,0 +1,6 @@
+如果一个接口只有一个抽象方法
+它的实现类可以用lammbda表达式
+
+MyInterface 是一个接口
+
+MyInterface myInterface = ()->{}

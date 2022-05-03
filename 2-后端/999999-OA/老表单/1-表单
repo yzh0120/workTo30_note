@@ -1,0 +1,62 @@
+<div class="lr-form-wrap" id="form">
+
+	 <div class="col-xs-6 lr-form-item">
+	        <div class="lr-form-item-title">合作开始日期<font face="宋体">*</font></div>
+	        <input id="StartDate" autocomplete="off" isvalid="yes" checkexpession="NotNull" class="form-control lr-input-wdatepicker fm_required ui_fm_error fm_has_tip" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'EndDate\');}',dateFmt:'yyyy-MM-dd'})" />
+	    </div>
+
+	<div class="col-xs-6 lr-form-item">
+		<div class="lr-form-item-title">开户行名称<font face="宋体">*</font></div>
+		<input id="OpenBank" type="text" class="form-control" isvalid="yes" checkexpession="NotNull" onblur="accountBlur(event)" />
+	</div>
+	
+	
+	<div class="col-xs-6 lr-form-item">
+		<div class="lr-form-item-title">业绩归属人<font face="宋体">*</font></div>
+		<div  type='lrselect' id="AchievementsUserId" class="form-control" isvalid="yes" checkexpession="NotNull"></div>
+	</div>
+
+	<div class="col-xs-6 lr-form-item">
+		<div class="lr-form-item-title">是否员工自拓渠道<font face="宋体">*</font></div>
+		<div type='lrselect' id="IsSelfExtension" class="form-control" isvalid="yes" checkexpession="NotNull"></div>
+	</div>
+</div>
+----------------------------------------------------------------------------------------
+绑定字段           id="IsSelfExtension"    
+        
+输入框校验         isvalid="yes" checkexpession="NotNull"
+					 if (!$('#form').lrValidform()) {
+					            return false;
+					        }
+							
+							
+下拉框下拉数据   一般是value  和 text
+			$("#IsSelfExtension").lrselect({
+				placeholder: "请选择是否员工自拓渠道",
+				data: [{ id: '0', text: '否' }, { id: '1', text: '是' }]
+			})
+			
+			或者
+			
+			var dfop1 = {
+				value: "F_UserId",
+				text: "F_RealName",
+				title: "F_RealName",
+				maxHeight: 200,
+				allowSearch: true,
+				url: top.$.rootUrl + '/LR_OrganizationModule/User/GetAllUserList',
+			};
+			$('#AchievementsUserId').lrselect(dfop1);
+			
+			
+下拉框change事件			$("#Categroy").change(function () {
+			                var value = $(this).lrselectGet();
+			                if (value == 1) {
+			                    vm.showTable = true;
+			                    /*if (!vm.list || vm.list.length == 0) {
+			                        vm.list = list;
+			                    }*/
+			                } else {
+			                    vm.showTable = false;
+			                }
+			            })

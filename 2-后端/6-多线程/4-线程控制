@@ -1,0 +1,5 @@
+static void sleep(long millis)  让当前正在执行的线程暂停执行指定的毫秒数
+
+void join()            等待这个线程死亡 其他线程才执行
+
+void setDaemon(Boolean on)  将此线程标记为守护线程,当运行的线程都是守护线程的时候 且main线程执行完毕java虚拟机将推出

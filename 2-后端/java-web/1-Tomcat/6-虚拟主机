@@ -1,0 +1,39 @@
+什么是虚拟主机:在电脑上设置一个目录,使用一个名称和该目录进行绑定,这个路径称为虚拟主机,主机是可以发布web项目
+
+
+1  
+	创建一个主机(磁盘上的一个目录) D:\baidu
+	创建一个路径webapps(访问路径)(主机内部的一个目录) D:\baidu\webapps
+	
+		Host 就是表示一个虚拟主机  ,appBase指代虚拟主机的路径,  name是虚拟主机的名称
+      <Host name="www.baidu.com"  appBase="D:\baidu" unpackWARs="true" autoDeploy="true">
+
+        <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
+               prefix="localhost_access_log" suffix=".txt"
+               pattern="%h %l %u %t &quot;%r&quot; %s %b" />
+
+      </Host>
+	  
+	  
+2 修改本地的hosts文件
+c:\windows\ysstem32\drivers\etc\hosts
+
+
+3 访问 简单配置 所以需要www.baidu.com:8080/websites/baidu.html
+           1 修改端口号   在Tomcat/conf/server.xml
+		       <Connector port="80" protocol="HTTP/1.1"
+		                  connectionTimeout="20000"
+		                  redirectPort="8443" />
+						  
+			2 去掉websites   在Tomcat/conf/server.xml
+			<Context path="/" docBase="websites"></Context>
+			
+			3 配置首页(在Tomcat/conf/web.xml)
+			<welcome-file-list>
+			        <welcome-file>index.html</welcome-file>
+			        <welcome-file>index.htm</welcome-file>
+			        <welcome-file>index.jsp</welcome-file>
+					<welcome-file>baidu.htm</welcome-file>
+			    </welcome-file-list>
+			 
+			

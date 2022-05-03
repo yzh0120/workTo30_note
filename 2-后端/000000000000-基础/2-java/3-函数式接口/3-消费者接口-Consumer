@@ -1,0 +1,25 @@
+有入参
+没出参
+
+void accept(T t):对给定的参数执行此操作
+
+default Consumer<T> andThen(Consumer after) 返回一个组合的Consumer,依次执行操作,然后执行after操作
+
+============================================
+定义  消费数据
+private static void operatorString(String name ,Consumer<String> con){
+	con.accept(name)
+}
+
+
+调用
+operatorString("林清晰",(String s)=>{})
+
+============================================
+定义一个方法,用不同的方式消费相同的数据两次
+private static void operatorString(String name ,Consumer<String> con1,Consumer<String> con2){
+	con1.andThen(con2).accept(name)
+}
+
+调用
+operatorString("林清晰",(String s)=>{},(String s)=>{})

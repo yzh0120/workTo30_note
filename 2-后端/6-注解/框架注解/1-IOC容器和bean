@@ -1,0 +1,27 @@
+https://www.cnblogs.com/bossen/p/5824067.html
+Spring中Bean及@Bean的理解
+
+@Configuration和@Bean的用法和理解
+https://www.cnblogs.com/soundcode/p/6477974.html
+
+Spring的注解 @Bean用法
+https://blog.csdn.net/qq_27706119/article/details/111768599
+-------------------------------------------------------------------------
+
+Spring IOC容器基本原理
+https://www.cnblogs.com/linjiqin/archive/2013/11/04/3407126.html
+
+Spring Ioc容器加载过程详解
+1）Resource定位（容器寻找数据的过程）
+
+2）载入（把用户定义好的bean表示成IOC容器内部的数据结构即：BeanDefinition）
+
+3）注册（把载入的BeanDefinition注册到IOC容器）
+
+4) 实例化
+
+http://www.bubuko.com/infodetail-3499592.html
+Spring之IOC容器的加载过程
+-------------------------------------------------------------------------
+Springboot 启动分析
+http://www.bubuko.com/infodetail-3829419.html

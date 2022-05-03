@@ -1,0 +1,38 @@
+
+/* 等同于 js的常用方法 */
+
+<17>  split(",");  通过参数切割成 String[]           
+
+<12>  substring(beginIndex,endIndex)  //返回字符串从从下标beginIndex到beginIndex-1的下标位置
+
+<11>  contains(s1) //如果该字符串的子字符串包含s1，返回true                 等同于 includes     
+
+=============================================================
+
+<1>   length() 返回字符串中的字符数。       
+                                    
+<2>   charAt（index） 返回字符串s中指定位置的字符
+
+<3>   toUpperCase() //返回一个新字符串，其中所有字母大写
+
+<4>   toLowerCase() //返回一个新字符串，其中所有字母小写。
+
+<5>   concat(s1) //将本字符串和字符串s1连接，返回一个新字符串。等价"+"
+
+<6>   trim() //返回一个新字符串，去掉两边的空白字符
+
+<7>   equals(s1) //如果该字符串内容等于字符串s1，返回true。
+
+<8>   equalsIgnoreCase(s1) //如果该字符串内容等于字符串s1，返回true。不区分大小写！
+
+<9>   startsWith(prefix) //如果字符串以特定前缀开始，返回true
+
+<10>  endsWith(suffix) //如果字符串以特定的后缀结束，返回 true
+
+<13>  indexOf(s1) //返回字符串中出现第一个s1的下标，如果没有返回-1
+
+<14>  indexOf(ch，fromIndex) //返回字符串中fromIndex之后出现的第一个ch下标，如果没有返回-1
+
+<15>  getBytes()将字符串变成一个byte数组
+
+<16>  replace(a, "HELLO WORD") 将a替换HELLO WORD

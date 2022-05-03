@@ -1,0 +1,11 @@
+1 修改全部字段  不需要返回值是因为可以通过异常来确定是否修改成功
+编写接口方法:    int update(User user)
+		参数     所有参数
+		返回类型  int 影响的行数
+	
+编写Sql语句
+			<updeate id="add">
+				updeate user set  company_name = #{companyName},
+									xx_name = ${xxName}
+									where id = #{id}
+			</updeate>

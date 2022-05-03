@@ -1,0 +1,24 @@
+?.
+链式判断运算符(短路机制)
+const firstName = message?.body?.user?.firstName || 'default';   不存在则返回undefined
+
+以下写法是禁止的，会报错。
+
+// 构造函数
+new a?.()
+new a?.b()
+
+// 链判断运算符的右侧有模板字符串
+a?.`{b}`
+a?.b`{c}`
+
+// 链判断运算符的左侧是 super
+super?.()
+super?.foo
+
+// 链运算符用于赋值运算符左侧
+a?.b = c
+
+===================================================
+Null 和 undefined判断运算符 :只有运算符左侧的值为null或undefined时，才会返回右侧的值。
+const headerText = response.settings.headerText ?? 'Hello, world!';

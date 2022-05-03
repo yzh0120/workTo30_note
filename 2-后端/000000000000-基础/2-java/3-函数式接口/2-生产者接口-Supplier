@@ -1,0 +1,17 @@
+没有入参 
+有出参
+
+T get()获取结果
+
+================================
+定义  生产数据
+private static String getString(Supplier<String> sup){
+	return sup.get()
+}
+
+
+调用
+String s = getString(()->{return "凌青霞"})
+
+
+

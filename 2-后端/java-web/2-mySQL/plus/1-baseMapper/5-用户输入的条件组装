@@ -1,0 +1,19 @@
+----------------------------------------------------------用户输入条件  这种写法非常麻烦
+if(StringUtils.isNotBlank(userName)){
+	queryWrapper
+	.like("user_name",user_name)
+}
+if(ageBegin != null){
+	queryWrapper
+	.gt("age",ageBegin)
+}
+if(ageEnd != null){
+	queryWrapper
+	.le("age",ageEnd)
+}
+
+userMapper.selectList(queryWrapper)  根据条件构造器查询
+----------------------------------------------------------使用condition
+queryWrapper.like(StringUtils.isNotBlank(userName),"user_name",user_name)
+			.ge(ageBegin != null,"age",ageBegin)
+			.le(ageEnd != null,"age",ageEnd)

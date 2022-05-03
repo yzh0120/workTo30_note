@@ -1,0 +1,5 @@
+void setName(String name)   将此线程的名称更改为name
+String getName(String name)  返回此线程的名称
+
+Thread.currentThread()  返回当前正在执行的线程对象的引用  静态方法
+.getName()

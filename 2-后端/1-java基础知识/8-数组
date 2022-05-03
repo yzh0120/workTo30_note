@@ -1,0 +1,24 @@
+动态初始化 只指定数据的长度
+int[]  arr =  new int[3];
+
+静态初始化
+int[] arr = new int[]{1,2,3}
+int[] arr = {1,2,3}
+    
+数组操作的两个小问题	  
+	arr[index越界]
+	arr = null  arr[0]  空指针异常
+	
+--------------------------------------------------------------数组长度可变
+import java.util.ArrayList;
+
+ArrayList<String> array = new ArrayList<>()
+
+Booblean add(item) 将元素追加到数组结尾
+Booblean add(index , item) 在指定位置添加元素 后面的元素index+1
+Booblean remove(item)       删除指定的元素 返回删除是否成功
+E remove(index)   删除index 处的元素,返回被删除的元素
+
+E set(index,item)  修改指定索引处的元素 返回被修改的元素
+E get(index)          返回index的元素
+int size()  返回集合的个数

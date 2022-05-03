@@ -1,0 +1,21 @@
+--------------------------------------------------------反射获取构造方法并使用
+1 获取Class对象
+Class<?> c4 = Class.forName("com.xxx.Class")
+
+2   获取类的构造函数
+---------------------------------------------------------------------------
+	1 getConstructors 获取public修饰的构造函数
+	Constructor<?>[] cons= c.getConstructors()
+	for(Constructor con : cons){
+		
+	}
+---------------------------------------------------------------------------
+	2 getDeclaredConstructors()  获取所有的(包括私有和默认)构造函数
+	Constructor<?>[] cons= c.getDeclaredConstructors()
+---------------------------------------------------------------------------
+	3 getConstructor  返回单个public修饰构造函数()
+		Constructor<?> con= c.getConstructor()   
+	  Object o = con.newInstance()       //创建对象
+---------------------------------------------------------------------------
+	4   getDeclaredConstructor  获取单个(包括私有和默认)构造函数
+		Constructor<?> con= c.getDeclaredConstructor() 

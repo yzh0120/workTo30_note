@@ -1,0 +1,16 @@
+1 @value
+	@Value("${name}")   @Value("${person.name}")   @Value("${arr[0]}")
+	private String name;
+
+2 Environment
+	@Autowired
+	private 	Environment env
+	
+	env.getProperty("person.name")
+
+3 @ConfigurationProperties
+
+@ConfigurationProperties  或者 @ConfigurationProperties(prefix = "person")
+public class  Person{ 
+	private String name;
+}

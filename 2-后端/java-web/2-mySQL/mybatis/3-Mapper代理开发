@@ -1,0 +1,35 @@
+
+----------------------------------------------------------------------
+1   resources 下 配置 mybatis-config.xml
+		并在                         配置SQL的映射文件
+			<!--加载sql的映射文件-->
+				<mapper resource="userMapper.xml"/>
+			</mappers>
+---------------------------------------------------------------------
+2   配置 sql的映射文件 表名+Mapper.xml
+---------------------------------------------------------------------
+3   在java目录中建立接收一个SQL语句结果的类 User.java
+---------------------------------------------------------------------
+4   1 定义和SQL映射文件同名的Mapper接口,并且将Mapper接口和SQL映射文件放置在同一目录下
+	2 namespace必须是全限定名
+	3 在Mapper接口中定义id="selectAll"相同的方法名
+---------------------------------------------------------------------
+5   (编码)使用
+	//  1来加载mybatis 核心配置文件 获取 SqlSessionFactory
+	        String resource = "mybatis-config.xml";
+	        InputStream inputStream = Resources.getResourceAsStream(resource);
+	        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+	
+	//  2 获取 SqlSession对象,用它来执行SQL
+	        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+	
+	// 3 获取UserMapper接口代理的对象
+	        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+	        List<User> users = userMapper.selectAll();
+
+	//4 释放资源
+	sqlSession.close();
+
+	//
+	System.out.println(users);
+			

@@ -1,0 +1,148 @@
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_GxForm.cshtml";
+}
+<style>
+    body {
+        overflow-y: auto;
+        padding: 0 10px;
+        font-size: 14px;
+        background: #fff;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    #channelProject {
+        padding: 20px 0;
+    }
+</style>
+<div id="ChannelInfo" v-loading="loading">
+
+
+    <div class="lr-layout-tool">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="panel-title">查询条件</div>
+            </div>
+            <div class="panel-body">
+
+                <el-form :model="form" ref="form" size="small" :inline="true" label-width="120px">
+
+
+
+                    <el-form-item label="筛选方式" prop="year">
+                        <el-select v-model="form.type" placeholder="请选择" @@change="typeChange" clearable>
+                            <el-option v-for="item in typeOptions"
+                                       :key="item.value"
+                                       :label="item.label"
+                                       :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </el-form-item>
+
+
+
+
+                    <template v-if="form.type == 1">
+                        <el-form-item label="年份" prop="year">
+                            <el-select v-model="form.year" placeholder="请选择" @@change="yearChange" clearable>
+                                <el-option v-for="item in opYear"
+                                           :key="item"
+                                           :label="item"
+                                           :value="item">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+
+
+
+                        <el-form-item label="季度">
+                            <el-select v-model="form.quarter" placeholder="请选择" :disabled="quarterDisabled" clearable @@change="quarter_change">
+                                <el-option v-for="item in opQuarter"
+                                           :key="item.value"
+                                           :label="item.label"
+                                           :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+
+                        <el-form-item label="开始月份">
+                            <el-select v-model="form.month" placeholder="请选择" :disabled="monthDisabled" clearable @@change="month_change">
+                                <el-option v-for="item in opMonth"
+                                           :key="item.value"
+                                           :label="item.value"
+                                           :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+
+                        <el-form-item label="结束月份">
+                            <el-select v-model="form.monthEnd" placeholder="请选择" :disabled="monthDisabled || !form.month" clearable>
+                                <el-option v-for="item in opMonthEnd"
+                                           :key="item.value"
+                                           :label="item.value"
+                                           :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </template>
+
+                    <template v-if="form.type == 2">
+                        <el-form-item label="具体日期时间段" prop="year">
+                            <el-date-picker v-model="form.daterange"
+                                            type="daterange"
+                                            range-separator="至"
+                                            start-placeholder="开始日期"
+                                            end-placeholder="结束日期" value-format="yyyy-MM-dd">
+                            </el-date-picker>
+                        </el-form-item>
+                    </template>
+
+
+
+                </el-form>
+
+                <div class="text-center">
+                    <el-button type="primary" @@click="search">搜索</el-button>
+                    <el-button type="warning" @@click="resetForm">重置</el-button>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    <el-table :data="tableData" border style="width: 98%;margin:0 auto" height="65vh">
+
+        <el-table-column prop="date" label="渠道名称"> </el-table-column>
+        <el-table-column prop="date" label="出函日期"> </el-table-column>
+        <el-table-column prop="date" label="公司收费"> </el-table-column>
+        <el-table-column prop="date" label="公司实收"> </el-table-column>
+        <el-table-column prop="date" label="渠道费"> </el-table-column>
+        <el-table-column prop="date" label="出函笔数"> </el-table-column>
+        <el-table-column prop="date" label="否单笔数"> </el-table-column>
+        <el-table-column prop="date" label="退单笔数"> </el-table-column>
+        <el-table-column prop="date" label="退单笔数"> </el-table-column>
+        @*                <el-table-column label="操作" width="180" fixed="right">
+                <template slot-scope="scope">
+                    <el-button size="mini" @@click="edit(scope.row,scope.$index)">编辑</el-button>
+                </template>
+            </el-table-column>*@
+    </el-table>
+
+    <BasePager :data="pagerData" @@pagechange="getData()" @@sizechange="getData()"></BasePager>
+
+</div>
+
+
+<link href="~/Content/v-echarts/style.min.css" rel="stylesheet" />
+<script src="~/Content/v-echarts/echarts.min.js"></script>
+<script src="~/Content/v-echarts/index.min.js"></script>
+
+@Html.Partial("/Areas/Guarantee/Views/Components/BasePager.cshtml")
+@Html.AppendJsFile("/Areas/Guarantee/Views/Components/BasePager.js")
+
+@Html.AppendJsFile("/Areas/Guarantee/Views/GuaranteeStatistical/ChannelInfo.js")

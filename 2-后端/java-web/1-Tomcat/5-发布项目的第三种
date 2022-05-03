@@ -1,0 +1,8 @@
+3 : 在Tomcat/conf/Catalina/localhost/下配置tomcat虚拟路径
+
+
+在Tomcat/conf/Catalina/localhost/ 新建一个 it.xml 配置文件
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 不需要path path等于 it.xml的名称-->
+<Context  docBase="c:\bbb"></Context>

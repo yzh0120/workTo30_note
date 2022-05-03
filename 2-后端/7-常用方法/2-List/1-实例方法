@@ -1,0 +1,9 @@
+<1>   void add(int index,E e)            在此集合上的指定位置插入指定元素
+<2>   E remove(int index)                删除index处的元素
+<3>   E set(int index, E e)              设置指定index的元素
+<4>   E get(int index)                   返回指定index的元素
+
+<5>   void clear()             清空元素的集合
+<6>   boolean contains(Object o) 判断集合是否包含元素
+<7>   boolean isEmpty() 判断集合是否为空
+<8>   int size() 集合的长度

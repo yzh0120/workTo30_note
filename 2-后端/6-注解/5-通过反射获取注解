@@ -1,0 +1,17 @@
+Class<?> c4 = Class.forName("com.xxx.Class")
+
+//获取注解
+Annotation[]  annotations =  c4.getAnnotations
+for(Annotation annotation : annotations){
+	
+}
+
+
+//获取注解的值     TableK 是定义的注解
+TableK tableK = (TableK)c4.getAnnotation(TableK.class)
+String value   = tableK.value()
+
+
+//获取类指定(成员)的注解
+ File f = c4.getDeclaredFileId("name")
+ TableK tableK = f.getAnnotation(TableK.class)

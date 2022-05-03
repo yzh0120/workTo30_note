@@ -1,0 +1,18 @@
+1 批量删除  不需要返回值是因为可以通过异常来确定是否删除成功
+编写接口方法:    void delByIds(@Param("ids") int[] ids)
+		参数      id
+		返回类型  void
+	
+编写Sql语句
+			<delete id="delByIds">
+				delete user where id in 
+				<foreach collection="ids" item="id" separator="," open="("    close=")"> 
+				#{id}
+				<foreach> 
+				;
+			</delete>
+----------------------------------------------------------------------------
+@Param 知识
+mybatis 会将数组参数,封装成一个map集合
+ 默认 array = 数组参数
+ 所以通过 @Param 改变这种map集合的默认可以的名称

@@ -1,0 +1,44 @@
+事务是由一组SQL语句组成的逻辑单元
+
+事务具有ACID的属性
+原子性: 事务中的全部操作在数据库中是不可分割的，要么全部完成，要么全部不执行
+一致性: 几个并行执行的事务，其执行结果必须与按某一顺序 串行执行的结果相一致
+隔离性: 事务的执行不受其他事务的干扰，事务执行的中间结果对其他事务必须是透明的
+持久性: 对于任意已提交事务，系统必须保证该事务对数据库的改变不被丢失
+---------------------------------------------------------------------
+隔离等级:
+	<1> Read uncommitted(读未提交):     -->   解决了更新丢失，但还是可能会出现脏读
+		一个事务还没有提交前，它做的变更能被别的事务看见
+		
+	<2> Read committed(读已经提交)     -->    解决了更新丢失和脏读问题,但是 不可重复读是读取了其他事务更改的数据，针对update操作
+		一个事务提交后，其变更才能被其他事务看见
+		
+	<3> Repeatable read(可重复读取)   -->    解决了更新丢失、脏读、不可重复读,但是  幻读是读取了其他事务新增的数据，针对insert和delete操作
+	一个事务执行过程中看见的数据，和这个事务在启动时一致（被其他事物修改也没用）。在此机制下，未提交变更对其他事务也是不可见的
+	
+	<4> Serializable(可序化)         -->    解决了更新丢失、脏读、不可重复读、幻读(虚读)
+	对于数据操作，写会加写锁，读会加读锁。当出现读写锁冲突时，后访问的事务必须等前一个事务执行完成，才能继续执行。
+	
+	
+	mysql修改事务隔离级别:
+	
+	<1>  SELECT @@tx_isolation;  //查看当前事物级别：
+	<2>  set session transaction isolation level 需要设置的事务隔离级别
+	<3>  set session transaction isolation level read uncommitted; //设置read uncommitted级别：
+	<4>  set session transaction isolation level read committed;   //设置read committed级别：
+	<5>  set session transaction isolation level repeatable read;  //设置repeatable read级别：
+	<6>  set session transaction isolation level serializable;     //设置serializable级别：
+---------------------------------------------------------------------开启事务
+方式 1
+START TRANSACTION 或 BEGIN 开始新的事务 
+COMMIT 提交当前事务 
+ROLLBACK 回滚当前事务
+
+方式 2
+
+SET autocommit = 0;自动提交前一个事务 然后关闭自动提交
+再 SET autocommit = 1，是自动提交事务的。
+
+
+
+

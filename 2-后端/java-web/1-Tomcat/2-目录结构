@@ -1,0 +1,15 @@
+bin                                  Tomcat 的二进制文件(命令文件 开启软件或者关闭)
+conf                                 配置文件
+lib                                  Tomcat需要的jar包
+logs                                 tomcat服务器日志文件
+temp                                 tomcat运行所产生的临时文件
+webapps                              需要发布的项目,里面有个ROOT的目录是tomcat默认加载的目录,其他目录(xxx)访问时需要加上/xxx路径
+work                                 jsp 会被编译成java类的代码就放到了work
+
+
+website
+		静态页面(HTML CSS JS 图片)
+		JSP
+		WEB-INF  web.xml(必须的)            只要是动态网站(前端后端不分离)就必须要WEB-INF目录
+				classes  (可选的)           动态项目用到了java类就要这个
+				lib       (可选的)           开发过程中需要使用的第三方jar包  比如数据库的链接

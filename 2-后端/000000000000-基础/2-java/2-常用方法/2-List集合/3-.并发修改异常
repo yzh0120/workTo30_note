@@ -1,0 +1,65 @@
+java List集合的并发修改异常源码分析和解决方法
+https://blog.csdn.net/m0_51474171/article/details/120669881
+
+
+当用迭代器遍历集合的同时对集合做增删等操作会有并发修改异常java.util.ConcurrentModificationException
+
+public class ListDemo01 {
+    public static void main(String[] args) {
+        List<String> li=new ArrayList<>();
+        li.add("java");
+        li.add("html");
+        li.add("css");
+        li.add("javascript");
+        Iterator<String > it=li.iterator();
+        while(it.hasNext()){
+            String s=it.next();
+            if(s.equals("html")){
+               li.add("jvm");
+            }
+        }
+        System.out.println(li);
+    }
+}
+
+
+解决方法一：使用get()=============================================================
+
+public class ListDemo01 {
+    public static void main(String[] args) {
+        List<String> li=new ArrayList<>();
+        li.add("java");
+        li.add("html");
+        li.add("css");
+        li.add("javascript");
+        for(int i=0;i<li.size();i++){
+            String s=li.get(i);
+            if(s.equals("java")){
+                li.add("jvm");
+            }
+        }
+        System.out.println(li);//[java, html, css, javascript, jvm]
+    }
+}
+
+
+解决方法二：使用List集合特有的迭代器ListIterator=============================================================
+
+public class ListDemo01 {
+    public static void main(String[] args) {
+        List<String> li=new ArrayList<>();
+        li.add("java");
+        li.add("html");
+        li.add("css");
+        li.add("javascript");
+        ListIterator<String > it= li.listIterator();
+        while(it.hasNext()){
+            String s=it.next();
+            if(s.equals("html")){
+               it.add("jvm");
+            }
+        }
+ 
+        System.out.println(li);//[java, html, css, javascript, jvm]
+    }
+}

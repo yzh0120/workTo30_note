@@ -1,0 +1,30 @@
+ var self = this;         //默认就是form Data
+//top.learun.loading(true, "正在加载数据");
+top.learun.gxhttpAsync('POST', `/PerFormance/AppraisalInfo/SaveList`, { __RequestVerificationToken: token, entity: {} }, function (res) {
+	//top.learun.loading(false);
+	if (res.code == 200) {
+		//self.tableData = res.data.rows;
+		//self.pagerData.total = res.data.total;
+		self.$message.success(res.info)
+	} else {
+		self.$message.error(res.info)
+	}
+});
+----------------------------------------------------------------------------------------
+this.$http.get(`/GX_OAModule/Statistics/GetTeamMember?teamId=${this.searchForm.teamId}`).then(res => {
+                let result = res.data;
+                if (result.code == 200) {
+                    this.salesmanAList = result.data;
+                }
+            }, err => { })
+---------------------------------------------------------------------------------------------
+that.$http.post("/Guarantee/SignContract/BatchSignature?ids=" + item.Id, { __RequestVerificationToken: $.lrToken }, { emulateJSON: true }).then(result => {
+                        top.learun.loading(false);
+                        top.layer.close(index);
+                        var res = result.data;
+                        if (res.code == 200) {
+                            that.getSignContracts();
+                        } else {
+                            that.$message.error(res.info);
+                        }
+                    })

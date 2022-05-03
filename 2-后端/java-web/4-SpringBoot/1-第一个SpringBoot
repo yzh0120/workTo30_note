@@ -1,0 +1,4 @@
+SpringBoot 在创建项目的时候,使用jar的打包方式
+
+
+SpringBoot 引导类是项目入口,运行main方法就可以启动项目

@@ -1,0 +1,18 @@
+git实战中遇到git@github.com: Permission denied (publickey).的问题
+
+https://www.cnblogs.com/future-dream/p/11021983.html
+
+
+
+github：当你想要使用VSCODE开心提交代码时，出现Git:git@github.com:Permission denied(publickey)解决方案
+https://www.bbsmax.com/A/x9J2l8wjd6/
+
+
+
+cd ~/.ssh
+
+ssh  -v git@github.com
+
+ssh-keygen -t rsa -C “644193385@qq.com”        生成密匙
+
+ssh -T git@github.com   尝试链接git

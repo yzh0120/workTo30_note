@@ -1,0 +1,26 @@
+基本类的包装概述
+
+		
+	将基本数据类型封装成对象的好处在于在对象中定义更多的功能方法操作该数据
+		
+		byte          Byte
+		short
+		int           Integer
+						1:parseInt 把字符串转化为int
+		long
+		float
+		double
+		char         Character
+		boolean
+		
+		
+		常用操作之一 基本数据类型和字符串之间的装换
+		int --> String
+		int num = 100
+		1  "" + num
+		2 String.valueOf(num)
+		
+		String --> int
+		1:  Integer i = Integer.valueOfs("1")
+			int x = i.intValue()
+		2:Integer.parseInt("1")

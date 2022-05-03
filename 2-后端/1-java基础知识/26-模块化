@@ -1,0 +1,45 @@
+模块和模块之间就相当于两个项目,无法互相访问class
+
+在模块的src目录下新建一个名为module-info.java的描述性文件,该文件专门定义模块名,访问权限,模块依赖等信息
+	描述性文件中使用模块导出和模块依赖来进行配置
+	module myOne Worl {
+		//exports 包名
+		exports com.ite
+	}
+	module myTwo {
+		// requires 模块名
+		requires  myOne
+	}
+	
+
+模块服务的使用
+1 在某个包中定义一个抽象放
+	public interface MyServe{
+		void serviexe()
+	}
+	
+2 在myOne这个模块的描述性文件中添加如下配置
+module myOne Worl {
+		//exports 包名
+		exports com.ite
+		
+		//服务提供
+		provides MyServe with xxx   指定MyServe的实现类是  xxx
+	}
+	
+3 使用
+	module myTwo {
+		// requires 模块名
+		requires  myOne
+		
+		uses MyServe
+	}
+	
+	在具体代码中如何使用
+	//加载服务
+	ServiceLoader<MyServe> laod = ServiceLoader.load(MyServe.class)
+	
+	//遍历服务
+	for(MyServe my : MyServe){
+		my.serviexe()
+	}

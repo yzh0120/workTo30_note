@@ -1,0 +1,11 @@
+//查询所有
+select * from table1
+
+//查询 某几个列
+select age,name from table1
+
+//去除重复记录
+select distinct age,name from table1
+
+//别名
+select age as 年龄,name as 姓名 from table1

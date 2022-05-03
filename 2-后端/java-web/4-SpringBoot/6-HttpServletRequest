@@ -1,0 +1,32 @@
+@RequestParam @RequestBody @PathVariable 等参数绑定注解详解
+https://www.cnblogs.com/guoyinli/p/7056146.html
+
+
+api中@RequestBody,@RequestParam,@PathParam,@PathVariable获取参数
+https://blog.csdn.net/qq_35221138/article/details/93381476
+
+
+@PathVariable             @PathVariable(value="name",required = true)  String name
+@RequestParam，              @RequestParam(value = "price",required = false,defaultValue = "0") Integer price
+
+
+
+
+SpringBoot使用@RequestBody接收多个对象的解决办法
+https://blog.csdn.net/hunt_er/article/details/109678025
+@RequestBody,                 @RequestBody Map<String, Object> map
+// fastjson转成json对象
+JSONObject jsonObject = JSON.parseObject(json);
+// 在转成不同的实体类
+PagerDto  pagerDto= jsonObject.getObject("pagerData", PagerDto.class);
+
+pagerDto.getPageNo();
+
+
+
+
+
+
+
+
+ @GetMapping("/data/reqparam/{id}")  动态path

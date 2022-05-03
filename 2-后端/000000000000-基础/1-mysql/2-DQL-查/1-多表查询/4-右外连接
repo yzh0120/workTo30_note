@@ -1,0 +1,6 @@
+右外连接:查询B表所有数据和A表交集的数据
+
+select 字段列表 from 表1 right [outer] join 表2 on 条件
+
+//查询部门表中所有的数据和对应的员工信息
+select t1.id,t2 from people_table t1 right  join dep_table t2 on t1.dep_id = t2.did

@@ -1,0 +1,60 @@
+var id = request('id');//授信id
+var token;
+var bootstrap = function ($, learun) {
+    "use strict";
+    token = $.lrToken;
+}
+
+Vue.filter("formatDate", function (time) {
+    if (typeof (time) == "undefined" || time == "" || time == null) {
+        return "";
+    }
+    var date = time.replace(/ 0:00:00/g, '').replace(/ 00:00:00/g, '').replace(/T00:00:00/g, '');
+    if (date.length > 10) {
+        date = date.substring(0, 10);
+    }
+    if (date == "0001-01-01") {
+        date = "";
+    }
+    return date;
+})
+Vue.http.headers.common.Authorization = 'Bearer ' + top.$.accessToken;
+var vm = new Vue({
+    el: "#secondcredit1",
+    data() {
+        return {
+            dialogVisible:false,
+            pagerData: {
+                pageNo: 1, //第一页
+                pageSize: 20, //每页显示20张
+                total: 0, //总数
+            },
+            tableData: [{}, {}],
+            formAlert: {},
+            options:[]
+        }
+    },
+    methods: {
+        add() {
+            this.dialogVisible = true
+        },
+        search() {
+            this.pagerData.pageNo = 1
+            this.getData()
+        },
+        getData() {
+            console.log("11111")
+        },
+        cancel() {
+            this.formAlert = {}
+            this.dialogVisible = false
+        },
+        comfirm() {
+            this.cancel()
+        },
+        edit(row) {
+            this.formAlert = Object.assign({}, row)
+            this.dialogVisible = true
+        },
+    }
+})

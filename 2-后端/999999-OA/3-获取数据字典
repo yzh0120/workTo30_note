@@ -1,0 +1,26 @@
+//获取数据字典对象
+getDataDictionarys(code) {
+	var that = this;
+	top.learun.clientdata.getAllAsync('dataItem', {
+		code: code,
+		callback: function (data) {
+			that.dataItem[code] = [];
+			for (var item in data) {
+				if (!isNaN(Number(data[item].value))) {
+					//if (code == "ORGANIZATION_TYPE") {
+					//    data[item].value = Number(data[item].value);
+					//}
+				}
+				that.dataItem[code].push(data[item])
+			}
+		}
+	})
+},
+//使用
+<el-col :span="8">
+	<el-form-item label="组织机构类型">
+		<el-select v-model="form.FCustomerOrgType" placeholder="请选择" style="width:100%;" filterable>
+			<el-option v-for="(item,index) in dataItem['ORGANIZATION_TYPE']" :key="index" :label="item.text" :value="item.value"></el-option>
+		</el-select>
+	</el-form-item>
+</el-col>

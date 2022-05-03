@@ -1,0 +1,32 @@
+userMapper.updateById(实体类)  根据实体类的id修改
+
+-------------------------------------------------
+1使用queryWrapper实现修改功能
+queryWrapper
+.gt("age",30)
+.like("user_name","a")
+.or()
+.isNull("email")
+
+User user = new User()
+user.setName()
+
+ userMapper.update(user,queryWrapper)
+ ---------------------------------------------------------------条件优先级
+ 如果使用了 and 或者 or 方法 ,并且使用了 lamada表达式 (consummer:消费者接口),则优先执行
+ queryWrapper
+ .like("user_name","a")
+ .and(i->i.gt("age",30).or().isNull("email"))
+ 
+ 
+ 2  使用 updateWrapper
+ UpdateWrapper<User> updateWrapper  = new UpdateWrapper<>()
+ updateWrapper
+ .gt("age",30)
+ .like("user_name","a")
+ .or()
+ .isNull("email")
+ 
+ updateWrapper.set(字段名 , 值)
+ 
+ userMapper.update( null,updateWrapper )

@@ -1,0 +1,6 @@
+<1> forEach()
+	.forEach((String name)->{} )
+	
+	
+<2> count  返回元素个数
+	.count()

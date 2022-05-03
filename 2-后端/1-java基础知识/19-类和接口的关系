@@ -1,0 +1,18 @@
+-------------------------------------------------------------------------------
+类和接口的关系
+	类和类的关系 
+		继承(extends)关系 ,只能是单继承 但是可以多层继承
+		
+		
+    类和接口的关系
+		实现关系(implements) ,可以单实现 也可以多实现,还可以在继承一个类的时候实现多个接口
+		public abstract class implements demo,demo2,demo3{
+			
+		}
+		
+		
+	接口和接口的关系	
+		继承(extends)关系,单继承也可以多继承
+		public interface demo extends demo2,demo3{
+			public abstract void eat()
+		}

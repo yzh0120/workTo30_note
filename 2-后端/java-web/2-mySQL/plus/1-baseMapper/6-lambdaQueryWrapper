@@ -1,0 +1,4 @@
+Lambda是防止字段写错
+
+LambdaQueryWrapper<User> queryWrapper  = new LambdaQueryWrapper<>()
+queryWrapper.like(StringUtils.isNotBlank(userName),User::getName,user_name)

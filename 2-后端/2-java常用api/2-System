@@ -1,0 +1,2 @@
+void exit(int )         终止当前运行的java虚拟机,非零表示异常终止
+long currentTimeMillis()        返回当前时间的毫秒值

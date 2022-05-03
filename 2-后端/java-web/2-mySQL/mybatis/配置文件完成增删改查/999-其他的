@@ -1,0 +1,52 @@
+步骤
+	编写接口方法:Mapper接口
+		参数
+		返回类型
+	
+	编写Sql语句
+	
+	测试
+--------------------------------------------------------------------------
+	特殊字符
+	
+	1 转义字符
+	2CDATA :<![CDATA[
+	        
+	        ]]>
+--------------------------------------------------------------------------
+			parameterType="int"   parameterType可以省略
+--------------------------------------------------------------------------
+<mapper namespace="com.mapper.UserMapper">
+	<!--    id是sql的唯一标识 , resultType是返回结果的类型,需要有实体类接收-->
+	<!--数据库的表的字段名和实体类的字段不一致,不能自动封装
+	1 sql语句起别名   select company_name as companyName from user;  缺点 每次查询都要定义一次别名
+
+	2 sql片段 <sql id="xxx"> company_name as companyName  ,xx_name as xxName </sql>
+		xxx 代表了 company_name as companyName  ,xx_name as xxName  片段
+		select  <include refid="xxx"></include>
+		from user;
+
+	3  id="唯一标识,随便起名"  type和哪个数据类型映射
+
+		<result> 是一般字段的映射
+		<id> 是主键字段的映射
+		column 猎德名称  ;property 实体类的属性名
+
+		<resultMap id="resultMapId type="User">
+				<result column="" property=""></result>
+				<id column="" property=""></id>
+		</resultMap>
+
+		然后 删除 resultType 添加resultMap <select id="selectAll" resultMap="resultMapId">
+			select * from user;
+		</select>
+
+	-->
+
+	<select id="selectAll" resultType="User">
+		select * from user;
+	</select>
+</mapper>
+---------------------------------------------------------------------
+占位符 : #{}     会将其替换为?       为了防止SQL注入
+		${}     会将其替换为参数

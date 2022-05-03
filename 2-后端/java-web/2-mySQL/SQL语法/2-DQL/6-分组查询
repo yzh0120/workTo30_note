@@ -1,0 +1,27 @@
+select 
+	字段列表 
+from 
+	表名
+[where 分组前条件限定]
+
+group by
+	分组字段名
+	
+[having  分组后条件查询]
+
+分组之后 ,查询的字段为聚合函数和分组字段	,查询其他字段无意义
+
+where 和 having 的区别
+执行时机不一样 : where 是分组前 ,不满足条件不参与分组,而having是分组后对结果进行过滤
+可判断的条件不一样 : where不可以对聚合函数进行判断,而having可以
+
+执行顺序 : where > 聚合函数 > having 
+-------------------------------------------------------------------------------------------------
+select sex, avg(math) from table1 group by sex;查询男同学和女同学的平均分(分组之后 ,查询的字段为聚合函数和分组字段	,查询其他字段无意义)
+
+select sex, avg(math) conunt(*) from table1 group by sex;查询男同学和女同学的平均分,以及各自人数
+
+select sex, avg(math) conunt(*) from table1 where math > 70 group by sex;查询男同学和女同学的平均分,以及各自人数,数学成绩>70 才参与分组
+
+查询男同学和女同学的平均分,以及各自人数,数学成绩>70 才参与分组,且分组之后人数大于2
+select sex, avg(math) conunt(*) from table1 where math > 70 group by sex having conunt(*) > 2 ;

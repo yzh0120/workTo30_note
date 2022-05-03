@@ -1,0 +1,16 @@
+public static final InputStream in 标准输入流  (通常对应键盘输入)
+	InputStream in = system.in;
+	
+	int by                           优化读全部的方法
+	while( (by = in.read()) != -1 ){
+		out( (char)by )
+	}
+	
+	
+	InputStreamReader isr = new InputStreamReader(in)
+	BufferedReader br = new BufferedReader(isr)//只能使用字符缓冲的特有方法
+------------------------------------------------------------------------------------
+public static final PrintStream out 标准输出流         输出控制台
+	PrintStream ps = system.out;
+	ps.print()    本质是一个字节输出流
+	ps.printIn()

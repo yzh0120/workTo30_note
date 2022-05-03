@@ -1,0 +1,41 @@
+<td >金额</td>
+<td colspan="3">{{convertCurrency(info.TurnedAwayFee)}}</td>
+<td>¥</td>
+<td>{{info.TurnedAwayFee | formatMoney}}</td>
+
+---------------------------------------------
+
+{{item.GuaranteeFee | numFilter}}  金额格式化
+
+
+
+@Html.AppendJsFile("/Areas/GX_OAModule/Views/BusinessReport/Mixin.js")
+------------------------------------------------------------------------------------自定义过滤器
+formatMoney(num, point) {
+            if (!!num && num.toString().indexOf(",") != -1) {
+                return num;
+            }
+            if (typeof (num) === "undefined" || num === "") {
+                return "";
+            }
+            if (num == null || num == 0) {
+                return 0;
+            }
+            return top.learun.numFilter(num, point);
+        },
+
+        formatDate(time) {
+            if (typeof (time) == "undefined" || time == "" || time == null) {
+                return "";
+            }
+            var date = time.replace(/ 0:00:00/g, '').replace(/ 00:00:00/g, '').replace(/T00:00:00/g, '');
+            if (date.length > 10) {
+                date = date.substring(0, 10);
+            }
+            if (date == "0001-01-01") {
+                date = "";
+            }
+            return date;
+        }
+--------------------------------------------------------------------------
+item.A.Data.replace(/\n|\r\n/gi, "<br/>"

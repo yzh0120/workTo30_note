@@ -1,0 +1,24 @@
+对象序列化 就是将对象保存在磁盘中 或者在网络中传输
+
+-------------------------------------------------------对象序列化流 ObjectOutputStream
+ObjectOutputStream(OutputStream out)
+
+void writeObject(Object obj)   将指定的对象写入ObjectOutputStream
+注意 需要 obj所属的类 实现 Serializable
+-------------------------------------------------------对象反序列化流 ObjectInputStream
+ObjectInputStream(InputStream In)
+Object readObject()         从ObjectInputStream读取一个对象
+Student s = (Student) obj;
+-------------------------------------------------------对象序列化流的三个问题
+1 用对象序列化流序列化了一个对象,假如我们修改了对象所属的类文件,读取数据会不会出现问题
+	会出问题(序列化过程中产生了UID,修改类文件 会重新产生一个序列化id)
+	
+2如果出现问题了 如何解决
+	在类中
+	{
+		private static final long serialVersionUID = 42L
+	}
+
+
+3 如果某一个成员变量的值不想被序列化,如何实现
+  private transient int age    transient修饰的不会被序列化

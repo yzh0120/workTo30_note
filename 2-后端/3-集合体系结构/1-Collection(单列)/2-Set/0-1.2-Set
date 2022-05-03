@@ -1,0 +1,5 @@
+继承 collection,所有方法都通用
+1  不包含重复元素的合集(equals 比较)
+2  没有index  不能用普通的for
+
+

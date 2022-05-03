@@ -1,0 +1,4 @@
+public final int getPriority()     返回此线程的优先级
+public final int setPriority(int  )  设置此线程的优先级
+
+范围 1 - 10

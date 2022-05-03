@@ -1,0 +1,33 @@
+/////////////////////////////////////////////////页面
+<script type="text/template" id="SpecailInfo">
+	<div></div>	
+</script>
+/////////////////////////////////////////////////js
+Vue.http.headers.common.Authorization = 'Bearer ' + top.$.accessToken;
+Vue.component('specailinfo', {
+    template: `#SpecailInfo`,
+    props: {
+        globaldata: {
+            type: Object,
+            default: () => { }
+        }
+    },
+    data: function () {
+        return {
+       
+        }
+    },
+    mounted() {
+        
+    },
+    watch: {
+        
+    },
+	methods:{
+		
+	}
+ 
+})
+//////////////////////////////////////////////////////////使用
+@Html.Partial("/Areas/SecondCredit/Views/CreditCustomerInfo/CreditBaseInfo.cshtml")
+@Html.AppendJsFile("/Areas/SecondCredit/Views/CreditCustomerInfo/CreditBaseInfo.js")

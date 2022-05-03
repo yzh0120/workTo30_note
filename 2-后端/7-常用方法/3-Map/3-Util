@@ -1,0 +1,5 @@
+MapUtil.builder().put("Bank_of_deposit",tableAnddemo.getBankOfDeposit())
+                            .put("account",tableAnddemo.getAccount())
+                            .put("remark",tableAnddemo.getRemark())
+                            .put("id",tableAnddemo.getId())
+                            .put("Total_amount",tableAnddemo.getTotalAmount()).map()

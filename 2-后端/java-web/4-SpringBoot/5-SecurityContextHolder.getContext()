@@ -1,0 +1,7 @@
+SecurityContextHolder.getContext().getAuthentication()  用户信息
+[Principal=admin, 
+Credentials=[PROTECTED], 
+Authenticated=true, 
+Details=null, 
+Granted Authorities=[ROLE_normal, ROLE_admin, sys:manage, sys:user:list, sys:role:list, sys:menu:list, sys:tools, sys:dict:list, sys:role:save, sys:user:save]
+----------------------------

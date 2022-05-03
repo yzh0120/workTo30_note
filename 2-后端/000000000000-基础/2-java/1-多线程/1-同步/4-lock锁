@@ -1,0 +1,10 @@
+private Lock lock = new ReentrantLock()
+
+
+
+
+try{
+	lock.lock()
+}finally{
+	lock.unLock()
+}

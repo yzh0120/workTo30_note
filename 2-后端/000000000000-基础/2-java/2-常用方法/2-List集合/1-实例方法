@@ -1,0 +1,33 @@
+在此集合上的指定位置插入指定元素,原来位置的元素会向后移动           相当于js  arr[1] = 1 
+<1>   void add(int index,E e)            
+void add（E element）用于向集合的末尾插入新的元素
+
+当前要插入的位置已存在时，会自动将当前位置及之后的元素全部后移进行插入
+boolean addAll(int index, Collection<? extends E> c)：可以在原集合的指定位置一次性插入一个新集合
+boolean addAll(Collection<? extends String> c：在集合末尾可以一次性插入一个集合
+
+ 删除index处的元素                                              相当于js  splice(1,1)
+<2>   E remove(int index)               
+
+设置指定index的元素,实际上是一种替换操作 替换了当前元素,              相当于js    splice(1,1,2)
+要设置某个位置上的元素，这个位置必须已存在，否则会抛出异常
+<3>   E set(int index, E e)              
+
+ 返回指定index的元素                                              相当于js  arr[1] 
+<4>   E get(int index)                  
+
+
+
+
+
+
+<5>   void clear()             清空元素的集合
+
+<6>   boolean contains(Object o) 判断集合是否包含元素            相当于js  arr.includes()
+
+<7>   boolean isEmpty() 判断集合是否为空
+
+<8>   int size() 集合的长度                                     相当于js  arr.length()
+=============================================================
+list中add、set方法详解
+https://blog.csdn.net/super_DuoLa/article/details/109468502

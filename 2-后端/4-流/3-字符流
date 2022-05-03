@@ -1,0 +1,42 @@
+为什么需要字符流
+一个汉字的存储如果是GBK,占用两个字节,如果是UTF-8 ,占用3个字节
+
+由于字节流操作中文不是很方便,所以java提供了字符流
+字符流 = 字节流 + 编码
+--------------------------------------------
+字符串的编码解码问题  默认使用平台默认的字符集
+编码 : byte[] getBytes("GBK")
+解码 : String(byte[] bytes, "GBK")
+
+字符流的编码解码问题 默认使用平台默认的字符集
+字符流抽象基类
+Reader       字符输入流的抽象类
+Writer       字符输出流的抽象类
+
+InputStreamReader(FileInputStream,编码)   FileReader是它的子类,但是如果涉及到编码问题就不能使用子类了
+OutputStreamWriter(FileOutputStream,编码)  FileWriter是它的子类,但是如果涉及到编码问题就不能使用子类了
+
+
+
+--------------------------------------------字符流写数据的5种方式
+void write(int c)          写一个字符
+void write(char[] cbuf)     写一个字符数组
+void write(char[] cbuf,int off , int len)   写一个字符数组的一部分
+void write(String str)      写一个字符串                              一般用这种
+void write(String str,int off , int len)       写一个字符串的一部分
+--------------------------------------------字符流读数据的2种方式
+int read()                                                      1 一次读一个字符的数据
+InputStreamReader isr = new InputStreamReader(FileInputStream,编码)
+一次读一个字符数据                                                          一般用这种
+int ch;
+while( (ch=isr.read()) != -1 ){
+	(char)ch
+}
+isr.close()
+
+char[] char = new char[1024]  // 1024及其倍数                    2 一次读一个字符数组的数据
+int len;
+while( (len = isr.read(char)) != 1 ){  从该字节流中最多读bys.length的字节,len返回的是实际读取字节的个数
+	out( new String(char , 0 , len) )
+}
+char.close()     

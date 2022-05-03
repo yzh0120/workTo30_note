@@ -1,0 +1,29 @@
+1 idea 配置 maven环境
+	1 选择 idea 中 file -> settings
+	2 搜索maven
+	3 在右边找到maven home directory的三个点 选择本地安装的maven目录(E:\Program Files\apache-maven-3.8.4)
+	4 在右边找到user settings file ,勾选override,选择 (E:\Program Files\apache-maven-3.8.4\conf/settings.xml)
+	5 在右边找到Local repository ,勾选override , 选择 (D:\mvn_resp)
+	
+	
+	
+	
+2 maven坐标详解:资源的唯一标识,使用坐标来定义项目或者引入项目中需要的依赖
+	组成:   groupId        定义当前maven隶属组织名称(通常是域名反写,例如com.baidu)
+		    artifactId    定义当前maven的项目名称(通常是模块名称,例如 goods-vice)
+			version       定义当前项目版本号
+
+
+
+3 idea 创建maven项目
+
+	1 (右边第三个)创建模块,选择maven,点击next
+	2 填写模块名称,坐标信息,点击finish,创建完成
+	3 编写hellow 并运行
+
+
+4 idea导入maven项目
+	编译器右边有一个maven的面板,点一下,然后点击 + (add maven projects)
+	然后在弹出的资源管理器找个一个maven项目的pom.xml,点ok
+	
+4 maven-helper

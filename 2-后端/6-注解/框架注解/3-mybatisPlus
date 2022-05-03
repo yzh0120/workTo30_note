@@ -1,0 +1,27 @@
+@TableName(数据库标兵) 定义在类上---也可以在yml全局配置
+user_name 默认会转换 userName
+----------------------------------------------
+@TableId(valeu="数据库中的id",type=""  id生成的算法 默认雪花) -- 通过全局配置主键的生成策略
+----------------------------------------------
+@TableField("数据库中的字段名")
+----------------------------------------------
+@TableLogic                 软删除
+private Integer isDeleted
+----------------------------------------------
+@Version           版本号
+private Integer version
+----------------------------------------------
+public enum sexEnum{
+	MALE(1,"男")
+	FEMALE(2,"女")
+	
+	@EnumValue           将注释标注的属性存储到数据库
+	private Integer sex
+	private String sexName
+	
+	sexEnum(sex,sexName){
+		this.sex = sex
+	}
+}
+----------------------------------------------多数据源
+@DS("")  可在类或者服务层接口上

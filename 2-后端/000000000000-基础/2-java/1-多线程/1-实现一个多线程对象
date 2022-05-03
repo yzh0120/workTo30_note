@@ -1,0 +1,11 @@
+public class MyRunnable implements Runnable {
+	public void run (){
+		
+	}
+}
+
+MyRunnable myRunnable = new MyRunnable()
+
+Thread t1 = new Thread(myRunnable,"高鐵")
+
+t1.start()

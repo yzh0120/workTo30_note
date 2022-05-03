@@ -1,0 +1,30 @@
+mybatis 可以接受各种不同的参数
+	单个参数
+		POJO类型        直接使用,实体类属性名和参数占位符一致
+		Map集合         直接使用,键名和参数占位符一致
+		Collection     封装为map集合                                           建议@Param注解 定义key
+						map.put("collection",Collection集合)
+						map.put("arg0",Collection集合)
+						
+		List            封装为map集合                                        建议@Param注解 定义key
+						map.put("collection",List集合)
+						map.put("list",List集合)
+						map.put("arg0",List集合)
+						
+		Array           封装为map集合                                         建议@Param注解 定义key
+						map.put("array",Array集合)
+						map.put("arg0",Array集合)
+						
+		其他类型         直接使用
+	
+	
+	多个参数                                                                 建议@Param注解 定义key
+	
+	map.put("arg0",参数一)
+	map.put("param1",参数一)
+	
+	map.put("arg1",参数二)
+	map.put("param2",参数二)
+	
+	
+	

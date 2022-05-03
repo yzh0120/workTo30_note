@@ -1,0 +1,49 @@
+$('#girdtable').jfGrid({
+	url: top.$.rootUrl + '/PerFormance/ChannelPlatform/GetPageList',
+	headData: [
+		{ label: '负责人', name: 'ChannelChargeName', width: 100, align: "left" },
+
+		{
+			label: '业绩归属人', name: 'AchievementsUserId', width: 80, align: 'center',
+			formatterAsync: function (callback, value, row) {
+				learun.clientdata.getAsync('user', {
+					key: value,
+					callback: function (item) {
+						callback(item.name);
+					}
+				});
+			}
+		},
+		
+		{
+			label: '是否员工自拓渠道', name: 'IsSelfExtension', width: 120, align: "left", formatter: function (value) {
+				if (value === 0) {
+					return "否"
+				} else if (value === 1) {
+					return "是"
+				}
+			}
+		},
+	],
+	mainId: 'Id',
+	reloadSelected: true,
+	isPage: true
+});
+----------------------------------------------------------------------------------------
+ // 编辑
+$('#lr_edit').on('click', function () {
+	var keyValue = $('#girdtable').jfGridValue('Id');
+	selectedRow = $('#girdtable').jfGridGet('rowdata');
+	if (learun.checkrow(keyValue)) {
+		learun.layerForm({
+			id: 'form',
+			title: '编辑',
+			url: top.$.rootUrl + '/PerFormance/ChannelPlatform/Form?keyValue=' + keyValue,
+			width: 1000,
+			height: 700,
+			callBack: function (id) {
+				return top[id].acceptClick(refreshGirdData);
+			}
+		});
+	}
+});

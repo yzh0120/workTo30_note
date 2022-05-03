@@ -1,0 +1,26 @@
+在Tomcat/conf/server.xml配置虚拟路径
+
+这种方式需要配置Tomcat的虚拟路径
+
+虚拟路径 : 配置一个名称与一个真实的路径进行绑定,然后访问这个名称 找到真实的路径
+
+       <Host name="localhost"  appBase="webapps"
+                  unpackWARs="true" autoDeploy="true">
+      
+              <!-- SingleSignOn valve, share authentication between web applications
+                   Documentation at: /docs/config/valve.html -->
+              <!--
+              <Valve className="org.apache.catalina.authenticator.SingleSignOn" />
+              -->
+      
+              <!-- Access log processes all example.
+                   Documentation at: /docs/config/valve.html
+                   Note: The pattern used is equivalent to using pattern="common" -->
+              <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
+                     prefix="localhost_access_log" suffix=".txt"
+                     pattern="%h %l %u %t &quot;%r&quot; %s %b" />
+					 
+					 <!-- 配置虚拟路径  bbb是个目录 ,官方不推荐这个,因为修改了tomcat的核心配置文件,一旦出错整个tomcat就启动不了了-->
+					 <Context path="/it" docBase="c:\bbb"></Context>
+      
+            </Host>

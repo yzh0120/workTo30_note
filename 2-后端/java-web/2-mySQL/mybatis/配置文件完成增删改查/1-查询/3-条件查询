@@ -1,0 +1,38 @@
+------------------------------------------------------------------------------
+多条件查询         (多个输入框)
+编写接口方法:    
+					selectByCondition(@Param("status") int status,...)    需要使用 @Param(sql中的参数占位符名称) 
+					selectByCondition(User user)                           只需要保证sql的参数名和实体类属性名对应上
+					selectByCondition(Map map)                             只需要保证sql的参数名和map集合键的名称对应上,即可设置成功
+		参数     所有查询条件
+		返回类型  List
+	
+编写Sql语句
+			<select id="selectAll" resultType="User">
+				select * from user
+				where staus = #{status} 
+				and company_name like #{companyName}
+				and xxx_name like #{xxxName}
+			</select>
+------------------------------------------------------------------------------
+单条件查询    多个条件中选择一个(下拉框 - 多选一)
+
+	select * from user 
+	         <where> 
+				<choose>  
+						<when test="status != null">
+								 staus = #{status} 
+						</when>
+						
+						<when test="companyName != null and companyName != '' ">
+								 company_name like #{companyName}
+						</when>
+						
+						<when test="xxxName != null and xxxName!= '' ">
+								 xxx_name like #{xxxName}
+						</when>
+						<otherwise>
+						1=1
+						</otherwise>
+					</choose> 
+				</where> 

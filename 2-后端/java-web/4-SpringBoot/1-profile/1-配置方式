@@ -1,0 +1,24 @@
+多profile文件方式
+
+application.properties                 主文件
+
+application-dev.properties             开发
+
+application-pro.properties             开发
+
+application-test.properties             测试
+--------------------------------------------------------------------------
+yml多文档方式
+---
+spring
+  profiles: dev
+---
+spring
+  profiles: test
+---
+spring
+  profiles: pro
+---
+spring
+  profiles
+    active: pro

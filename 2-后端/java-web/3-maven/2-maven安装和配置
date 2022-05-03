@@ -1,0 +1,32 @@
+Maven的下载及安装
+https://www.cnblogs.com/qxcxy-silence/p/10808321.html
+
+maven下载及安装
+https://www.cnblogs.com/dingguofeng/p/8671661.html
+
+
+
+https://www.bilibili.com/video/BV1Qf4y1T7Hx?p=44
+--------------------------------------------------------------------------------
+1-解压maven压缩包就好了 绿色版
+
+
+2-配置环境变量
+新建 MAVEN_HOME = E:\Program Files\apache-maven-3.8.4
+
+在path 下边 配置 %MAVEN_HOME%\bin
+
+
+3-修改本地仓库
+修改conf/setting/.xml 的<localRepository> 为一个指定的目录
+<localRepository>D:\mvn_resp</localRepository>
+
+
+4-配置阿里云私服(比中央仓库快)
+	修改conf/setting.xml中的<mirrors>标签,为其添加如下子标签
+		<mirror>
+			<id>alimaven</id>
+			<name>aliyun maven</name>
+			<url>http://maven.aliyun.com/nexus/content/groups/public</url>
+			<mirrorOf>central</mirrorOf>
+		</mirror>

@@ -1,0 +1,7 @@
+//根据条件更新某个字段
+update table1 set age = 100 where name= "张三"
+
+//根据条件更新多个某个字段
+update table1 set age = 100,name="修改" where id= 1
+
+//如果 update语句没有加 where 条件,则将表中所有行的字段修改

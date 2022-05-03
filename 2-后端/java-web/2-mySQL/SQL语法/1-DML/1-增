@@ -1,0 +1,8 @@
+//给指定的列添加数据
+INSERT into table1(id,name,age) values(null,"xxx");
+
+//给所有列添加数据
+INSERT into table1 values(null,"xxx",19);
+
+//批量添加
+INSERT into table1(id,name,age) values(null,"xxx",20),(null,"xxx",47);

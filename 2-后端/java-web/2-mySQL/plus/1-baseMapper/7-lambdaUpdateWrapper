@@ -1,0 +1,10 @@
+LambdaUpdateWrapper<User> updateWrapper  = new LambdaUpdateWrapper<>()
+ updateWrapper
+ .gt(User::age,30)
+ .like(User::user_name,"a")
+ .or()
+ .isNull("email")
+ 
+ updateWrapper.set(字段名 , 值)
+ 
+ userMapper.update( null,updateWrapper )

@@ -1,0 +1,21 @@
+var pagination = JSON.stringify({ "rows": this.page.pageSize, "page": this.page.currentPage, "sidx": sidxstr, "sord": sordStr, "records": 0, "total": 0 });
+
+
+let self = this
+var pagination = JSON.stringify({ "rows": this.pagerData.pageSize, "page": this.pagerData.pageNo });
+var queryJson = JSON.stringify({
+	keyword: this.search.keyword,
+	current: this.search.current,
+	tasktype: this.search.tasktype
+});
+
+top.learun.gxhttpAsync('GET', `/Guarantee/GuaranteeLyProject/GetPageList?queryJson=${queryJson}&pagination=${pagination}`, 
+{ __RequestVerificationToken: token }, function (res) {
+	//top.learun.loading(false);
+	if (res.code == 200) {
+		self.tableData = res.data.rows;
+		self.pagerData.total = res.data.records;
+	} else {
+		self.$message.error(res.info)
+	}
+} )

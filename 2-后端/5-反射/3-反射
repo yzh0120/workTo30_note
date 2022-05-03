@@ -1,0 +1,15 @@
+java反射机制
+	是指在运行时去获取一个类的变量和方法信息,然后通过获取到的信息来创建对象,调用方法的一种机制,
+	由于这种动态性,可以极大的增强程序的灵活性,程序不用在编译期就完成确定,在运行时也可以扩展
+	
+--------------------------------------------------------获取class对象
+	我们想要通过反射去使用一个类,首先我们要获取该类的字节码文件对象,也就是类型为Class类型的对象(3种)
+	1 使用类的class属性来获取该类对应的Class对象.举例 Student.class将会返回Student类对应的class对象
+		Class<Student> = Student.class
+		
+	2 调用对象的getClass()方法,返回该对象所属类的Calss对象,所有java对象都可以调用该方法
+		Class<? extends Student > c3 = s.getClass();
+	
+	3 使用Class类中的静态方法forName(String className),该方法需要传入字符串参数,该字符串参数的值是某个类的全路径,也就是完整的包名的路径
+	Class<?> c4 = Class.forName("com.xxx.Class")
+	

@@ -1,0 +1,18 @@
+Properties 是Map集合类
+
+Properties 可以加载到流中或者从流中加载
+
+--------------------------------------------------------除开Map外的特有方法
+Object  setProperty(String key,String value)   底层调用hashTable 的put方法
+String  getProperty(String key)
+set<String> stringPropertyNames()   从该属性列表中返回一个不可修改的键集合,其中键及其对应的值是字符串
+
+--------------------------------------------------------Properties 和 IO流结合的方法
+
+void load(InputStream inputStream) 从输入字节流中读取到属性列表(键和元素对)
+
+void load(Reader reader)            从输入字符流中读取到属性列表(键和元素对)
+
+void store(OutputStream out ,String comments) 将此列表属性 写入 此 Properties表中,以适合于使用load(InputStream inputStream)方法的格式写入输出字节流
+
+void store(Writer writer ,String comments(描述信息 可以是null)) 将此列表属性 写入 此 Properties表中,以适合于使用void load(Reader reader) 方法的格式写入输出字符流

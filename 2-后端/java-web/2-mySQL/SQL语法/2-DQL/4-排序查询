@@ -1,0 +1,16 @@
+slect
+	字段列表
+from
+	表名列表
+order by
+	排序字段名1 排序方式,
+	排序字段名2 排序方式
+	
+ASC  升序 (默认)
+desc  降序
+
+如果有多个排序条件 ,前边的条件值一样时, 才会根据第二条件进行排序
+
+select age from table1 where order by age asc; 按照年龄升序
+select age from table1 where order by age desc; 按照年龄降序
+select age from table1 where order by age desc ,date desc; 按照年龄降序,再按照日期降序

@@ -1,0 +1,25 @@
+1
+	获取所有键的集合 用keySet()
+	遍历键的集合,获取到每一个键 .用增强for
+	根据键去寻找值 用get()
+	
+	Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+	for (Integer key : map.keySet()) {
+	    Integer value = map.get(key);
+	    System.out.println("Key = " + key + ", Value = " + value);
+	}
+	
+2
+	获取所有键值对对象的集合
+	遍历键值对对象的集合,得到每一个键值对对象 用增强for,得到每一个Map.Entry
+	获取每一个对象的键值对 (Map.Entry 的 getKey()  getValue())  
+
+	
+	例子
+	Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+	for(Map.Entry<Integer, Integer> entry : map.entrySet()){
+	    System.out.println("key = " + entry.getKey() + ", value = " + entry.getValue())
+	}
+===============================================================
+Java遍历map的五种方式 
+https://www.cnblogs.com/WongBynn/p/15480404.html

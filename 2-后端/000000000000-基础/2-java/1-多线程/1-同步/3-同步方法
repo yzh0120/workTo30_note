@@ -1,0 +1,5 @@
+同步方法  synchronized 修饰符 可以将方法内部的方法锁定 外部的它管不了(如果锁对象一样 就能管),它的锁对象就是类的this
+
+private synchronized void synchronized(){}
+
+注意 如果同步方法是static ,则 static的this和类的this不一样,所以其他方法的锁对象需要 类名.class

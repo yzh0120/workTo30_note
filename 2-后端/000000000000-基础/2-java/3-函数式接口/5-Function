@@ -1,0 +1,22 @@
+有入参
+有出参
+
+R apply(T t) 将此函数应用于给定的参数
+
+default <V> Function andThen(Function after) 返回一个组合函数,首先键该函数用于输入,然后after函数用于结果
+
+定义  
+private static void convert(String s,Function<String,Integer> fun){
+	int i = fun.apply(s)
+}
+
+调用
+convert("100",(String s)=>{ Integer.parseInt(s)})
+============================================================
+定义                                         入参    出参
+private static void convert(String s,Function<String,Integer> fun1,Function<Integer,String> fun2){
+	
+	String s = fun1.andThen(fun2).apply(s)
+}
+
+convert("100",(String s)=>{ Integer.parseInt(s)},(Integer i)=>{i + 100})

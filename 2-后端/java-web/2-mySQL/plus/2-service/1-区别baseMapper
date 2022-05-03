@@ -1,0 +1,14 @@
+
+
+save 保存
+
+remove 删除
+
+get 单行查询
+list 查询集合
+
+
+page 分页
+
+
+对应 serviceImpl

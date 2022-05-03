@@ -1,0 +1,18 @@
+maven-project
+	1 src目录(项目)    
+	
+		main目录(源代码目录)
+		
+			java(源代码java文件目录)
+			
+			resources(源代码配置文件目录)
+			
+			webapp(web项目核心目录)
+			
+		test目录(测试代码目录)
+		
+			java(测试代码配置文件目录)
+			
+			resources(测试代码配置文件目录)
+			
+	2 pom.xml(项目核心配置文件)                                                                      

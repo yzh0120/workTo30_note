@@ -1,0 +1,25 @@
+
+构造方法:
+Date()    分配一个Date对象,并初始化,以便它代表它被分配的时间,精确到	毫秒
+Date(long date)  	
+
+方法
+getTime()   获取到现在的毫秒值
+setTime(long time) 设置时间
+---------------------------------------------
+SimpleDateFormat  重点学习日期格式化和解析
+
+y   年
+M    月
+d    日
+H    时
+m    分
+s    秒
+
+构造方法
+SimpleDateFormat()
+SimpleDateFormat(String ) 
+
+方法
+format(Date date) 将 日期格式化成 字符串
+parse(String  )    将 字符串 格式化成 日期

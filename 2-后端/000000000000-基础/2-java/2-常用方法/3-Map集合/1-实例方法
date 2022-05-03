@@ -1,0 +1,11 @@
+<1>   v put(K key ,V value)        添加元素
+<2>   V remove(Object key)          根据键删除键值对元素
+
+
+查
+<3>     V get(Object key)                   根据键获取值
+
+		Set<K> keySet()                     获取所有键的集合
+		Collection<V> values()              获取所有值的集合
+		
+		Set<Map.Entry<K,V>> entrySet()      获取所有键值对象的集合

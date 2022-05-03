@@ -1,0 +1,2 @@
+SqlSession sqlSession = sqlSessionFactory.openSession()//默认开启事务,进行增删改操作后需要使用sqlSession.commit()手动提交
+或者 SqlSession sqlSession = sqlSessionFactory.openSession(true)  自动提交事务(关闭事务)

@@ -1,0 +1,34 @@
+Comparable和 Comparator的区别
+
+<1> Comparable可以认为是一个内比较器,
+实现了Comparable接口的类有一个特点，就是这些类是可以和自己比较的，至于具体和另一个实现了Comparable接口的类如何比较，则依赖compareTo方法的实现
+一个Collection的对象想要Collections的sort方法帮你自动进行排序的话，那么这个对象必须实现Comparable接口。compareTo方法的返回值是int，有三种情况
+1、比较者大于被比较者（也就是compareTo方法里面的对象），那么返回正整数       1   升序
+
+2、比较者等于被比较者，那么返回0                          0   不排序(被认为同一个元素,不添加进去)
+
+3、比较者小于被比较者，那么返回负整数                           	-1   降序
+
+
+=======================
+@Override
+	public int compareTo(Person o) { o表示前一个类(被比较者) this当前类
+		
+		return this.age - o.age;
+	}
+Arrays.sort(persons);
+=======================
+
+Comparable和Comparator区别（超详细对比分析）
+https://blog.csdn.net/qq_45559536/article/details/106091870
+
+<2> Comparator被称为外部比较器
+	如果我们需要对类A进行排序（该类本身不支持排序),我们可以另外定义一个实现了Comparator接口的类（类B）一定要实现compare（T o1， T o2）方法
+=======================
+@Override
+	public int compare(Person o1, Person o2) {  o1 当前类  , o2前一个类(被比较者)
+		return o1.age - o2.age;
+	}
+
+Arrays.sort(persons, new PersonComparator());
+=======================

@@ -1,0 +1,34 @@
+slect
+	字段列表
+from
+	表名列表
+where
+	条件列表
+group by
+	分组字段
+having 
+    分组后条件
+order by
+	排序字段
+limit 
+    分页限定
+	
+	---------------------------------------------
+	
+SELECT
+	字段列表
+FROM
+	表名列表
+WHERE
+	条件列表
+GROUP BY
+	分组字段
+HAVING 
+    分组后条件
+ORDER by
+	排序字段
+LIMIT 
+    分页限定
+	
+
+	

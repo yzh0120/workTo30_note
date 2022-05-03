@@ -1,0 +1,28 @@
+对象之间的继承格式 (如果一个成员变量(方法) 子类中有就不会使用父类的成员变量(方法))
+
+public calss Student extends People{
+	//子类中所有的构造方法都会访问父类的无参构造方法
+	//构造方法
+	public Student(){
+		//默认第一句 super()
+		
+	}
+	public Student(String name,int age){
+		//默认第一句 super()
+		super(String name,int age)
+	}
+}
+
+public calss  People{
+	
+}
+-0---------------------------------------------------------------------------------
+super 关键字
+
+super.成员变量 访问父类的成员变量 
+super(...)      访问父类构造方法
+super.成员方法(...)  访问父类成员方法
+
+this.成员变量 访问本类的成员变量 
+this(...)      访问本类构造方法
+this.成员方法(...)  访问本类成员方法

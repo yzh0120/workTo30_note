@@ -1,0 +1,17 @@
+public enum PayEnum{
+	//枚举项 通常采用全部大写       常量(也是一个对象 有get字段名 set字段名 的方法)          在调用的时候可以调用构造方法
+	WEIXIN("weixin","1")
+	ZHIFUBAO("zhifubao","2")
+	
+	private String name
+	private String url 
+	
+	PayEnum(){
+		
+	},
+	
+	PayEnum(name,url){
+		this.name =  name
+		this.url = url
+	}
+}

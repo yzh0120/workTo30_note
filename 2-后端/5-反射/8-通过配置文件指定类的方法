@@ -1,0 +1,19 @@
+1 告诉使用者 在calss.txt中配置使用的方法
+  className=xxx(带包的全路径)
+  methodName=xxx(方法名)
+  
+  
+2 加载数据
+	properties prop = new Properties()
+	FileReader fr = new FileReader("class.txt")
+	prop.load(fr)
+	fr.close()
+	
+	String className  = prop.getProperty("className")
+	String methodName  = prop.getProperty("methodName")
+
+3 通过反射来使用
+	 Calss.forName(className)
+	 Constructor<?> con= c.getConstructor(methodName)
+	 Object o = con.newInstance()
+	 m.invoke(obj,方法需要的参数)

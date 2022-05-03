@@ -1,0 +1,11 @@
+StringBuffer     
+
+
+Vector           用法和ArrayList一样                                         实际不会用它
+
+
+HashTable        用法和HashMap一样   任何非null对象都可以用作键和值            实际不会用它
+
+用 
+List<String> list = Collections.synchronizedList(new ArrayList<String>())
+Collections.synchronizedMap

@@ -1,0 +1,19 @@
+alt + enter  导包
+
+ctrl + shift + r  替换
+
+ctrl + b  进首次定义的地方
+
+alt + insert 生成getset方法
+
+ctrl + alt + v 生成左边内容 
+
+一键格式化代碼:Ctrl+Alt+L
+
+ctrl + P 显示方法的参数
+
+ctrl + H 显示继承关系
+
+快捷键 Alt + 7就能显示当前类中的所有方法、全局常量，方法还包括形参和返回值
+
+Ctrl+O  重载/   Ctrl + I 实现

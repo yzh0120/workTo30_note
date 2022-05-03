@@ -1,0 +1,45 @@
+Throwable
+
+Error                                 Exception
+严重问题 不需要处理                异常类,程序本身可以处理
+
+
+
+                            RuntimeException     非RuntimeException
+							在编译期是不检查的     在编译期必须处理,否则无法运行
+---------------------------------------------------------------------------------
+异常处理:
+第一种方案
+	try{
+		可能会出现异常的代码
+	}catch(异常类名,变量名){
+		处理异常
+	}finally{
+		
+	}
+	
+	
+	pubilic void xxx() throws 异常类名{  并没有对异常做实际的处理
+		
+	}
+---------------------------------------------------------------------------------
+Throwable 成员方法
+getMessage()                         返回此 Throwable 的详细字符串
+toString()                           返回此可抛出的简短语句
+printStackTrace()                   把异常的错误
+---------------------------------------------------------------------------------
+自定义异常 配合 throws
+定义:
+public class 异常类名 extends Exception{
+	pubilic 异常类名(){
+		
+	}
+	pubilic 异常类名(message){
+		
+	}
+}
+在其他类调用(别人在调用的时候需要 try caatch)
+pubilic class teacher throws 异常类名{
+	throw  new 异常类名()  //手动抛出异常
+}
+

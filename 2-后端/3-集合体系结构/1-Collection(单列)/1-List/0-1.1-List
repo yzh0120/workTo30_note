@@ -1,0 +1,52 @@
+List:
+List<String> c = new List<String>()
+1 允许重复
+2 有序(index)集合 可以精确控制List中每个元素插入的位置,用户可以通过indx 访问元素
+----------------------------------------------
+特有方法:
+void add(int index,E e)            在此集合上的指定位置插入指定元素
+E remove(int index)                删除index处的元素
+E set(int index, E e)              设置指定index的元素
+E get(int index)                   返回指定index的元素
+----------------------------------------------------------------
+
+
+并发修改导致异常
+while( whileit.hasNext() ){是否存在下一个元素
+	在这里指定 .add 方法会导致并发修改导致异常
+}
+
+解决代码: 
+1 :for(int i = 0 ; i<list.size();i++){
+	String s = list.get(i);
+	if(){
+		s.equals("world"){
+			list.add("xxx")
+		}
+	}
+}
+2:ListIterator的add方法
+----------------------------------------------------------------特有迭代器
+ListIterator继承Iterator,所以有Iterator的所有方法
+ListIterator<String> it = list.listIterator() 
+特有方法
+E previous()         返回list的上一个元素
+boolean hasPrevious()    逆向遍历 (很少用)  
+
+void add(E e)          将指定的元素插入列表
+
+-------------------------------------------------------------
+List 集合常用子类
+ArrayList  底层数据机构是数组 , 查询快  增删慢
+LinkedList 底层数据结构是链表   查询慢   增删快
+--------------------------------------------------------------------
+方法  roles 是list
+ String roleCodes = roles.stream().map(r -> "ROLE_" + r.getCode()).collect(Collectors.joining(","));
+ Java 8 stream的详细用法
+ https://blog.csdn.net/y_k_y/article/details/84633001
+ -------------------------
+ 1.字符串转换为List
+ List<String> list = Arrays.asList(str.split(","));
+ 
+ 2.List转换为字符串
+ String str = StringUtils.join(list, ",");

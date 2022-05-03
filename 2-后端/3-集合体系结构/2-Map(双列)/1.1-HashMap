@@ -1,0 +1,16 @@
+
+-------------------------------------------------------
+集合嵌套ArrayList集合存储HashMap元素并遍历
+
+1 创建ArrayList集合
+2 创建HashMap集合 并添加键值对元素
+3 把HashMap作为元素添加到ArrayList
+4 遍历ArrayList
+
+
+HashMap 集合存储 ArrayList 并遍历
+
+1 创建HashMap集合 并添加键值对元素
+2 创建ArrayList集合 并添加键值对元素
+3 把ArrayList作为元素添加到HashMap
+4 遍历HashMap

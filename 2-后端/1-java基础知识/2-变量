@@ -1,0 +1,20 @@
+数据类型 变量名称 = 值;
+
+数字
+int a = 1;
+	long l = 10000000000000L
+
+
+浮点
+double d = 1.1
+	float f = 3.14F
+
+
+单个字符
+char c = "a"
+
+
+布尔
+boolean b = true
+
+

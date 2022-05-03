@@ -1,0 +1,12 @@
+<1> collection 直接通过 .stream()
+	list.stream()
+	
+	
+<2> map
+	map.keySet().stream()
+	map.values.stream()
+	map.entrySet().stream()
+	
+	
+<3> array
+	Stream.of(array)

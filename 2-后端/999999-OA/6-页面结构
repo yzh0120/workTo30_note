@@ -1,0 +1,59 @@
+@{
+    ViewBag.Title = "企业客户基本信息";
+    Layout = "~/Views/Shared/_GxForm.cshtml";
+}
+<style>
+    body {
+        overflow-y: auto;
+        padding: 10px 10px 0;
+    }
+</style>
+<div id="secondcredit">
+    <el-tabs type="border-card">
+        <el-tab-pane label="客户基本信息">
+            <creditbaseinfo :gdata="$data"></creditbaseinfo>
+        </el-tab-pane>
+    </el-tabs>
+</div>
+
+@Html.Partial("/Areas/SecondCredit/Views/CreditCustomerInfo/CreditBaseInfo.cshtml")
+@Html.AppendJsFile("/Areas/SecondCredit/Views/CreditCustomerInfo/CreditBaseInfo.js")
+---------------------------------------------------------------------------------------------------
+var id = request('id');//授信id
+var token;
+var bootstrap = function ($, learun) {
+    "use strict";
+    token = $.lrToken;
+}
+
+Vue.filter("formatDate", function (time) {
+    if (typeof (time) == "undefined" || time == "" || time == null) {
+        return "";
+    }
+    var date = time.replace(/ 0:00:00/g, '').replace(/ 00:00:00/g, '').replace(/T00:00:00/g, '');
+    if (date.length > 10) {
+        date = date.substring(0, 10);
+    }
+    if (date == "0001-01-01") {
+        date = "";
+    }
+    return date;
+})
+Vue.http.headers.common.Authorization = 'Bearer ' + top.$.accessToken;
+var vm = new Vue({
+    el: "#secondcredit",
+    data() {
+        return {
+            globaldata: {
+                FCustomerNo: "",//客户号
+                FProjectCode: "",//借据号码
+                FAccountNo: "",//
+                FAccountType: "",
+                FCreditNo: "",//授信协议标识号码
+            }
+        }
+    }
+})
+
+
+

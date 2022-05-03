@@ -1,0 +1,7 @@
+1 打开 idea 点击 create new project
+2(新建项目)选择 Empty Project 然后next,输入项目名和 项目地址
+3(新建一个模块) project Structure 弹窗 --> 选择 Modules --> 点击右边的 + ,选择New Modules,
+				然后是一个 New Modules 弹窗(左边是java 右边是选择sdk),点击 next,然后写模块名称,点击finish,然后点击OK
+				
+4(新建一个package) 展开module 鼠标在src右键菜单 Package ,输入包名,
+5(新建一个calass)   鼠标在包名上右键菜单 ,选择 Java Class,输入类名

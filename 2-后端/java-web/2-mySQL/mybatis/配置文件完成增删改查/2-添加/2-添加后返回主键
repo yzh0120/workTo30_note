@@ -1,0 +1,6 @@
+---------------------------------------------------------------------------增加后主键返回
+
+<insert id="add" useGeneratedKeys="true" keyProperty="id">
+				insert into user(company_name.xx_name)
+				values ( #{companyName} , #{xxName});
+			</insert>

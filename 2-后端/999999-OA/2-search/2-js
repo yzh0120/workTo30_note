@@ -1,0 +1,181 @@
+var id = request('id');//授信id
+var token;
+var bootstrap = function ($, learun) {
+    "use strict";
+    token = $.lrToken;
+}
+
+Vue.filter("formatDate", function (time) {
+    if (typeof (time) == "undefined" || time == "" || time == null) {
+        return "";
+    }
+    var date = time.replace(/ 0:00:00/g, '').replace(/ 00:00:00/g, '').replace(/T00:00:00/g, '');
+    if (date.length > 10) {
+        date = date.substring(0, 10);
+    }
+    if (date == "0001-01-01") {
+        date = "";
+    }
+    return date;
+})
+Vue.http.headers.common.Authorization = 'Bearer ' + top.$.accessToken;
+var vm = new Vue({
+    el: "#ChannelInfo",
+    data() {
+        return {
+            form: {
+                type:1,
+                year: '',
+                quarter: '',
+                month: '',
+                monthEnd: '',
+                daterange:[]
+            },
+            quarterDisabled: false,
+            monthDisabled: false,
+            loading: false,
+            opYear: [],//年份下拉框
+            opMonthEnd: [],//月份结束
+            opQuarter: [
+                { value: 1, label: '第一季度' },
+                { value: 2, label: '第二季度' },
+                { value: 3, label: '第三季度' },
+                { value: 4, label: '第四季度' }
+            ],
+            opMonth: [
+                { value: 1 },
+                { value: 2 },
+                { value: 3 },
+                { value: 4 },
+                { value: 5 },
+                { value: 6 },
+                { value: 7 },
+                { value: 8 },
+                { value: 9 },
+                { value: 10 },
+                { value: 11 },
+                { value: 12 }
+            ],
+            typeOptions: [
+                { label: "年-季度-月份筛选", value: 1 },
+                { label: "具体日期时间段筛选", value: 2 },
+                
+            ],
+            tableData: [],
+            pagerData: {
+                pageNo: 1, //第一页
+                pageSize: 20, //每页显示20张
+                total: 0, //总数
+            },
+        }
+    },
+    mounted() {
+        /*获取年份*/
+		this.getopYear()
+        this.getData();
+    },
+    methods: {
+        search() {
+            this.pagerData.pageNo = 1
+            this.getData()
+        },
+        getData() {
+			let self = this
+            var pagination = JSON.stringify({ "rows": this.pagerData.pageSize, "page": this.pagerData.pageNo });
+            let obj = {}
+            if (this.form.type == 2) {
+                if (Array.isArray(this.form.daterange)) {
+					obj.start = this.form.daterange[0]
+					obj.end = this.form.daterange[1]
+				} else {
+					obj.start = ""
+					obj.end = ""
+				}
+            } else if (this.form.type == 1) {
+                obj = this.form
+            }
+            var queryJson = JSON.stringify(obj);
+            top.learun.loading(true, "正在加载数据");
+            top.learun.gxhttpAsync('GET', `/Guarantee/GuaranteeLyProject/GetPageList?queryJson=${queryJson}&pagination=${pagination}`,
+                { __RequestVerificationToken: token }, function (res) {
+                    top.learun.loading(false);
+                    if (res.code == 200) {
+                        self.tableData = res.data.rows;
+		                self.pagerData.total = res.data.records;
+                    } else {
+                        self.$message.error(res.info)
+                    }
+                })
+        },
+        /*获取年份*/
+        getopYear() {
+            let num = new Date().getFullYear().toString();
+            let arr = [];
+            for (let i = 2010; i <= num; i++) {
+                arr.push(i);
+            }
+            this.opYear = arr.reverse();
+        },
+        /*年份改变*/
+        yearChange() {
+            this.quarterDisabled = false;
+            this.monthDisabled = false;
+            this.form.quarter = "";
+            this.form.month = "";
+        },
+        //季度选择事件
+        quarter_change() {
+
+        },
+        //月份选择事件
+        month_change() {
+            this.form.monthEnd = null
+        },
+        //重置表单
+        resetForm(formName) {
+            for (let key of Object.keys(this.form)) {
+                if (key !== "type") {
+                    if (key == "daterange") {
+                        this.form[key] = []
+                    } else {
+                        this.form[key] = ''
+                    }
+
+                }
+            }
+        },
+        typeChange() {
+            for(let key of Object.keys(this.form)) {
+                if (key !== "type") {
+                    if (key == "daterange") {
+                        this.form[key] = []
+                    } else {
+                        this.form[key] = ''
+                    }
+                    
+                }
+                
+            }
+        },
+
+    },
+    watch: {
+        form: {
+            handler(newVal, oldVal) {
+                this.form.quarter ? this.monthDisabled = true : this.monthDisabled = false
+                this.form.month ? this.quarterDisabled = true : this.quarterDisabled = false
+            },
+            deep: true
+        },
+        "form.month": {
+            handler(newVal, oldVal) {
+                this.opMonthEnd = []
+                let num = this.form.month
+                let start = 12 - num;
+                for (let i = 0; i <= start; i++) {
+                    this.opMonthEnd.push({ value: num + i })
+                }
+            }
+        }
+    }
+})

@@ -1,0 +1,19 @@
+BufferedWriter(可以是OutputStreamWriter也可以是 FileWriter,大小)  字符输出缓冲流 
+BufferedReader(可以是OutputStreamReader也可以是 FileReader,大小)  字符输入缓冲流
+
+FileReader fw = new FileReader("路径")
+BufferedReader bw = new BufferedReader(fw)
+
+
+
+读写方法和字符流一样
+
+
+--------------------------------------------------字符缓冲流的特有功能
+
+BufferedWriter
+	void newLine() 写一行行分隔符,行分隔符由系统属性定义
+	
+	
+BufferedReader 
+    pubulic String readLine()  读一行文字,结果包含行的内容的字符串,不包括任何终止字符(换行符),如果流的结尾已经到达,则为null

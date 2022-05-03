@@ -1,0 +1,26 @@
+数组循环
+(function () {
+ var arr = [1,2,2,3,4,5];
+ var len = arr.length-1;
+ //start from the top
+ for(var i=len;i>=0;i--){
+ console.log(i+"="+arr[i]);
+ if(arr[i]==2){
+  arr.splice(i,1);
+ }
+ }
+ console.log(arr);
+})();
+-------------------------------------------------------
+PS F:\operateweb> git fetch
+
+PS F:\operateweb> git branch -a
+* master
+  remotes/origin/20220210_dev
+  remotes/origin/master
+
+PS F:\operateweb> git checkout 20220210_dev
+Switched to a new branch '20220210_dev'
+Branch '20220210_dev' set up to track remote branch '20220210_dev' from 'origin'.
+
+PS F:\operateweb> git branch

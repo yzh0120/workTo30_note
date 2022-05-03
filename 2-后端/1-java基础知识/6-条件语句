@@ -1,0 +1,21 @@
+if(表达式){
+	
+}else if{
+	
+}else{
+	
+}
+
+
+
+switch(和case比较的表达式){
+	case 1:
+		执行语句
+		break;
+	case 2:
+		执行语句
+		break;	
+	default
+		执行语句
+		break;
+}

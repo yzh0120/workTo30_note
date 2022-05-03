@@ -1,0 +1,26 @@
+https://www.cnblogs.com/dingguofeng/p/8709476.html
+windows下安装Redis并部署成服务
+--------------------------------------------------------------------------------
+1 启动一个cmd使用命令：redis-server.exe 启动服务
+
+2 启动另一个cmd，在该redis目录下，使用命令：redis-cli.exe 启动客户端,连接服务器
+127.0.0.1:6379> set  a  1
+127.0.0.1:6379> get  a
+--------------------------------------------------------------
+3 由于上面虽然启动了redis服务，但是，只要一关闭cmd窗口，redis服务就关闭了。所以，把redis设置为一个windows服务。
+  安装命令: redis-server.exe --service-install redis.windows.conf
+  
+4 启动服务
+  redis-server --service-start   (redis-cli.exe -h 127.0.0.1 -p 6379 )
+  
+  
+5 登录
+  redis-cli.exe -h 127.0.0.1 -p 6379 -a 123456
+  
+  
+  
+  netstat -ano
+  
+  netstat -aon|findstr "7774"
+  
+    taskkill /pid 22408 -t -f

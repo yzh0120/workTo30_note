@@ -1,0 +1,15 @@
+
+BufferedOutputStream(OutputStream out,size=8192) 提供一个缓冲区 ,一次性吧数据写到文件中
+
+BufferedInputStream(InputStream in,size=8192)   提高读数据的效率
+
+为什么构造方法需要的是字节流, 因为字节缓冲流仅仅提供缓冲区,而真正读写数据还得依靠基本的字节流对象进行操作
+
+
+
+
+
+
+
+
+读写方法和字节流一样

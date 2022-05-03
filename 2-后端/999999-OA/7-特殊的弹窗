@@ -1,0 +1,175 @@
+1 在对应的控制器的  #region 视图功能  加上
+  /// <summary>
+  /// 华商保函信息页面
+  /// </summary>
+  /// <returns></returns>
+  [HttpGet]
+  public ActionResult HuaShangBank()
+  {
+      return View();
+  }
+///////////////////////////////////////////////////////////////Detail
+writeWithholdNotice() {
+            top.learun.layerForm({
+                id: 'writePaymentNotice',
+                title: '付款通知书',
+                url: top.$.rootUrl + '/Guarantee/GuaranteeLyProject/writeWithholdNotice?id=' + companyId,
+                width: 800,
+                height: 400,
+                maxmin: true,
+                callBack: function (id) {
+                    return top[id].acceptClick(vm.getWithholdNoticeList);
+                }
+            });
+        },
+/////////////////////////////////////////////////////////////// writeWithholdNotice
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/x-template" id="roleinfo">
+  <div></div>
+</script>
+-----------
+Vue.component('roleinfo', {
+    template: `#roleinfo`,
+    props:[]
+})
+-----------引用
+@Html.Partial("~/Areas/Guarantee/Views/GuaranteeLyProject/hsBank.cshtml")
+@Html.AppendJsFile("/Areas/Guarantee/Views/GuaranteeLyProject/hsBank.js")
+
+弹窗----------------------------------------------------------------------------------------------------
+
+1 在对应的控制器的  #region 视图功能  加上
+  /// <summary>
+  /// 华商保函信息页面
+  /// </summary>
+  /// <returns></returns>
+  [HttpGet]
+  public ActionResult HuaShangBank()
+  {
+      return View();
+  }
+
+2 在页面中  <el-button type="primary" size="small" @@click="huaShangHandle">修改华商银行履约保函开函资料</el-button>
+
+3 在js中   
+  //填写华商保函信息按钮事件
+  huaShangHandle() {
+      top.learun.layerForm({
+          id: 'huaShang',//id 需要对上
+          title: '华商保函信息',
+          url: top.$.rootUrl + '/Guarantee/GuaranteeLyProject/HuaShangBank?id=' + companyId,
+          width: 1000,
+          height: 800,
+          callBack: function (id) {
+              return top[id].acceptClick(vm.getQueryData);//这个函数就是 点击确认的时候,会调用的函数
+          }
+      });
+  },
+
+
+  4 弹窗页
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_GxForm.cshtml";
+    }
+    <style>
+    </style>
+    <div id="huashang">
+        <hsbank :form="form" :upload-list="uploadList"></hsbank>
+    </div>
+
+
+    @Html.Partial("~/Areas/Guarantee/Views/GuaranteeLyProject/hsBank.cshtml")
+    @Html.AppendJsFile("/Areas/Guarantee/Views/GuaranteeLyProject/hsBank.js")
+    @Html.AppendJsFile("/Areas/Guarantee/Views/GuaranteeLyProject/HuaShangBank.js")
+    -----------------------------------------------------------------------------------------------------------------------------------------
+    var id = request('id');
+    var acceptClick,_learun, token;
+    var bootstrap = function ($, learun) {
+        "use strict";
+        _learun = learun;
+        token = $.lrToken;
+        // 保存数据
+        acceptClick = function (callBack) {
+            _learun.gxhttpAsync('POST', url, params, function (res) {
+                    _learun.loading(false);
+                    if (res.code == 200) {
+                        if (callBack) {
+                            callBack()
+                        }
+                        learun.layerClose(window.name);
+                    }
+                });
+        };
+    }
+
+    var vm = new Vue({
+        el: "#huashang",
+        data() {
+            return {
+            }
+        },
+        methods: {
+            saveform(callBack) {
+                this.$refs.form_form.validate((valid) => {
+                    if (valid) {
+                        top.learun.gxhttpAsync('POST', '/GX_OAModule/ChannelPerformance/SaveForm', { __RequestVerificationToken: token, }, function (res) {
+                            top.learun.loading(false);
+                            if (res.code == 200) {
+                                if (callBack) {
+                                    callBack()
+                                }
+                                top.learun.layerClose(window.name);
+                            }
+                        });
+                    }
+                })
+            },
+        }
+    })
+    
+-----------------------------------------------------------------------------------------------------------------------------------------
+提交后刷新其他页面F:\SVN\OA\tags\20200309\Learun.Application.Web\Areas\Guarantee\Views\GuaranteeLyProject\Apply.js
+top.learun.frameTab.parentIframe().refreshGirdData();
+top.learun.frameTab.open({ F_ModuleId: fullName, F_Icon: 'fa fa-file-text-o', F_FullName: fullName, F_UrlAddress: "/Guarantee/GuaranteeLyProject/Index?type=" + urlType });
+top.learun.frameTab.close(  learun.frameTab.iframeId  );
+查看 代开发票
+function projectDetail(companyid, companyname, productType) {
+    var name = "", url = "";
+    if (productType == 1) {
+        name = "工资";
+    } else if (productType == 2) {
+        name = "材料"
+    } else if (productType == 3) {
+        name = "车险"
+    }
+    if (productType == 1 || productType == 2) {
+        url = "/GX_OAModule/WagesApply/Detail?id=" + companyid + "&name=" + escape(companyname) + "&productType=" + productType
+    }
+    top.learun.frameTab.open({
+        F_ModuleId: "detail" + companyid, F_Icon: 'fa fa-file-text-o', F_FullName: name + "-用款详情", F_UrlAddress: url
+    })
+}
+
+
+
+if (learun.frameTab.parentIframe() && learun.frameTab.parentIframe().refreshGirdData) {
+                        learun.frameTab.parentIframe().refreshGirdData();
+                    }

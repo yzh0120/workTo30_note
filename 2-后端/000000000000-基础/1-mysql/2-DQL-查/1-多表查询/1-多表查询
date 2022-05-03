@@ -1,0 +1,14 @@
+多表查询  
+	select * from people_table,dep_table            会产生笛卡尔积(a,b所有的组合情况 结果 = A*B)
+	
+	select * from people_table,dep_table where people_table.dep_id = dep_table.did
+	
+	
+	
+	
+内连接:相当于查询A B表交集的数据
+		select * from people_table,dep_table where people_table.dep_id = dep_table.did
+------------------------------------------------------------------------
+外连接
+	左外连接:查询A表所有数据和B表交集的数据
+	右外连接:查询B表所有数据和A表交集的数据

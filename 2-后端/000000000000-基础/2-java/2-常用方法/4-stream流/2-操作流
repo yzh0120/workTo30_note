@@ -1,0 +1,24 @@
+操作流的方法会返回一个新的流
+
+<1> filter() 过滤
+	.filter( s -> s.startWidth("张"))
+	
+<2> limit
+	.limit(3)  返回流前3个元素
+	
+<3> .skip(3)  跳过流前3个元素,返回剩下的元素
+
+<4> .concat
+	Stream.concat(s1,s2)
+	
+<5> distinct    内部通过 equals 判断
+	.distinct()
+	
+<6> .sorted()     根据自然排序    .sorted(Comparator comparator)  根据提供的Comparator排序
+
+<7> map
+	.map(s -> Integer::parseInt(s))
+	
+<8> mapToInt
+	.mapToInt(t -> t*2).sum()
+	

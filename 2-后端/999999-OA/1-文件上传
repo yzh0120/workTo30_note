@@ -1,0 +1,8 @@
+<filelist projectid="123 " :uploadlist="uploadList1"></filelist>
+
+
+
+
+
+@Html.Partial("/Areas/Guarantee/Views/Components/FileList.cshtml")
+@Html.AppendJsFile("/Areas/Guarantee/Views/Components/FileList.js")

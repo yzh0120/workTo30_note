@@ -1,0 +1,15 @@
+集合类的特点 :提供一种存储空间可变的存储类型 存储的数据容量可以随时发生变化	
+
+														集合
+			            Collection(单列)                                           Map(双列)
+				List(可重复)         Set(不可重复)
+				
+				
+				
+	List  : ArrayList, LinkedList
+	
+	Set:    HashSet,TreeSet
+	
+	Map:    HashMap
+		 	
+			

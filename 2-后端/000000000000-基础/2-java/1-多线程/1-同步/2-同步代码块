@@ -1,0 +1,5 @@
+格式
+private object obj = new Object()
+synchronized(任意对象 obj){                           //任意对象必须是共享对象 就像是一把锁
+	多条语句操作共享数据的代码
+}

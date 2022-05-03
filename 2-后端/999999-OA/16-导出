@@ -1,0 +1,9 @@
+var queryJson = JSON.stringify({
+                Year: this.searchForm.year,
+                Month: this.searchForm.month,
+                TeamId: this.searchForm.teamId,
+                //SalesmanId: this.searchForm.salesmanId,
+                SortName: this.searchForm.sortName
+            });
+
+            location.href = top.$.rootUrl + '/PerFormance/AchievementCommissionItems/Export?queryJson=' + queryJson;

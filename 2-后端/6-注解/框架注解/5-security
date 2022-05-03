@@ -1,0 +1,11 @@
+@PreAuthorize      方法执行前进行权限校验
+
+@PostAuthorize    方法执行后进行权限校验
+
+@Secured         类似于@PreAuthorize  
+
+比如需要Admin 权限
+@PreAuthorize("hasRole('admin')")
+
+比如需要添加管理员的操作权限
+@PreAuthorize("hasAuthority('sys:user:save')")

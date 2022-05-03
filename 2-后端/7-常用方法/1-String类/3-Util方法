@@ -1,0 +1,14 @@
+<1>   StringUtils.isBlank(null): true          判断字符串是否空白                           
+	  StringUtils.isBlank(""): true
+	  StringUtils.isBlank(" "): true
+	  StringUtils.isNotBlank 正好相反
+	  
+	  
+<2>   StringUtils.isEmpty(null): true          判断字符串是否空
+	  StringUtils.isEmpty(""): true
+	  StringUtils.isEmpty(" "): false
+	  StringUtils.isNotEmpty 正好相反
+	  
+<3>   将数组通过参数链接成字符串
+	  StringUtils.join(["a", "b", "c"], "")    = "abc"
+	  StringUtils.join(["a", "b", "c"], "--")  = "a--b--c"

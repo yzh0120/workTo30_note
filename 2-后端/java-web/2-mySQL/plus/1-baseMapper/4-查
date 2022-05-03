@@ -1,0 +1,31 @@
+userMapper.selectById(id)  根据id查询
+
+userMapper.selectBatchIds(list<id>)   根据ids查询多条数据
+
+userMapper.selectByMap(Map键值对) 条件查询
+
+
+-------------------------------------------------
+链式操作的时候默认是并集(and)
+QueryWrapper<User> queryWrapper  = new QueryWrapper<>()
+queryWrapper
+.like("user_name","a")
+.isNotNull("email")
+userMapper.selectList(queryWrapper)  根据条件构造器查询
+
+
+//排序
+queryWrapper
+.orderByDesc("age")
+.orderByAsc("id")
+
+
+//select 字句
+queryWrapper
+.select("age","id")
+userMapper.selectMap(queryWrapper)根据条件构造器查询
+
+//子查询
+queryWrapper
+.inSql("id","select id form user where id < 100")
+userMapper.selectList(queryWrapper)  根据条件构造器查询

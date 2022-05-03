@@ -1,0 +1,30 @@
+约束 作用于某个列,用于限制加入列的数据,保证了数据库中数据的正确性,有效性和完整性
+
+
+约束名称                                                         关键字
+
+非空约束:保证列中所有的数据不能有null值                             not null
+
+唯一约束:保证列中所有的数据各不相同                                 unique
+
+主键约束:主键是一行唯一的标识,要求非空且为唯一                        primary key
+
+检查约束:保证列中的值满足某一条件                                    check
+
+默认约束:保存数据时,未指定值则采用默认值                               default
+
+外键约束:外键用来让两个表的数据之建立连接,保证数据的一致性和完整性        foreign key
+
+
+mysql 不支持检查约束
+//案例
+CREATE TABLE stu (
+	id INT primary key,--编号                                     主键
+	NAME VARCHAR (20) not null unique,-- 姓名                     非空且唯一
+	age INT,-- 年龄
+	sex VARCHAR (5), -- 性 别
+	address VARCHAR (100),-- 地址
+	math DOUBLE (5, 2) default 0,-- 数学成绩                      默认0
+	english DOUBLE (5, 2),-- 英语成绩
+	hire_date date-- 入学时间
+);

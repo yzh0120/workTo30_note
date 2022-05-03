@@ -1,0 +1,26 @@
+元注解是解释其他注解的注解
+
+@Target : 用于描述注解的使用范围(被描述的注解可以用在什么地方)
+
+
+
+@Retention:表示需要在什么级别保存该注释信息,用于描述注解的生命周期  source < class < runtime
+
+
+@Document 说明该注解将被包含在javadoc中
+
+
+@Inherited  说明子类可以继承父类中的注解
+
+-------------------------------------------------------
+定义一个注解 ()
+
+ 
+ @Target({ElementType.METHOD,ElementType.TYPE})   在方法和类上使用
+ @Retention( RetentionPolicy.RUNTIME)  只有在源码时 注解才有效
+ @Document   说明该注解将被包含在javadoc中
+ @Inherited  说明子类可以继承父类中的注解
+ @interface MyAnnotation{
+	
+}
+

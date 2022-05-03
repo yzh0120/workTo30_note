@@ -1,0 +1,72 @@
+if  
+
+choose(when ,otherwise)       单条件            
+
+trim(where,set)
+
+foreach
+
+
+---------------------------------------------------------------- 解决 where 不能直接 and, 和 多个输入框必须全部填写值
+1  where 1 = 1 and 
+2   where标签替换where关键字
+		select * from user
+				<where>  
+						<if test="status != null">
+								and staus = #{status} 
+						</if>
+						
+						<if test="companyName != null and companyName != '' ">
+											and company_name like #{companyName}
+						</if>
+						
+						<if test="xxxName != null and xxxName!= '' ">
+											and xxx_name like #{xxxName}
+						</if>
+				</where> 
+--------------------------------------------------------choose 解决多选一 (otherwise 类似于default)(或者 where标签包裹choose标签)
+	select * from user 
+	         <where> 
+				<choose>  
+						<when test="status != null">
+								 staus = #{status} 
+						</when>
+						
+						<when test="companyName != null and companyName != '' ">
+								 company_name like #{companyName}
+						</when>
+						
+						<when test="xxxName != null and xxxName!= '' ">
+								 xxx_name like #{xxxName}
+						</when>
+						<otherwise>
+						1=1
+						</otherwise>
+					</choose> 
+				</where> 
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------解决 多个输入框必须全部填写值
+<select id="selectAll" resultType="User">
+				select * from user
+				where  
+						<if test="status != null">
+								staus = #{status} 
+						</if>
+						
+						<if test="companyName != null and companyName != '' ">
+											and company_name like #{companyName}
+						</if>
+						
+						<if test="xxxName != null and xxxName!= '' ">
+											and xxx_name like #{xxxName}
+						</if>
+			
+</select>

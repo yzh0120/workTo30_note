@@ -1,0 +1,5 @@
+listStream.collect(Collectors.toList())
+
+listStream.collect(Collectors.toSet())
+
+listStream.collect(Collectors.toMap(key,value))

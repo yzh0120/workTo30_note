@@ -1,0 +1,32 @@
+标准类的定义(封装)
+
+public static Student{
+	//成员变量
+	private String name
+	private int age
+	
+	//构造方法 
+	public Student(){
+		
+	}
+	public Student(String name,int age){
+		
+	}
+	
+	//get
+	public String getName(e){
+		return  name
+	}
+	//set
+	public void setName(String name){
+		this.name = name
+	}
+	
+
+	public String getAge(e){
+		return  age
+	}
+	public void setAge(int age){
+		this.age = age
+	}
+}

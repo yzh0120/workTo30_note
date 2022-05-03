@@ -1,0 +1,24 @@
+1 添加  不需要返回值是因为可以通过异常来确定是否添加成功
+编写接口方法:    void add(User user)
+		参数      除了id之外的所有参数
+		返回类型  void
+	
+]编写Sql语句
+			<insert id="add">
+				insert into user(company_name, xx_name)
+				values ( #{companyName} , #{xxName});
+			</insert>
+
+---------------------------------------------------------------------------
+添加会开启事务
+
+//4 释放资源
+	sqlSession.close();
+	
+1 // 需要手动提交事务
+	sqlSession.commit()
+	
+	
+2	或者 参数是true
+	//  2 获取 SqlSession对象,用它来执行SQL
+	        SqlSession sqlSession = sqlSessionFactory.openSession(true);

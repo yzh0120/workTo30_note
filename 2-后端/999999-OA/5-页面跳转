@@ -1,0 +1,7 @@
+top.learun.frameTab.open(
+{ 
+	F_ModuleId: "audit" + item.Id, 
+F_Icon: 'fa fa-file-text-o', 
+F_FullName: fullName, 
+F_UrlAddress: "/Guarantee/GuaranteeLyProject/Detail?id=" + item.Id + "&name=" + escape(item.CompanyName) + "&code=" + item.SerialNumber + "&bank=" + bank
+ });

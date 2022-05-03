@@ -1,0 +1,33 @@
+boolean test(t t)  返回一个布尔值
+
+default Predicate<T> negate()	返回逻辑非
+
+default Predicate<T> and(Predicate other)	返回短路与
+
+default Predicate<T> and(Predicate other)	返回短路或
+
+Predicate<T>  判断参数是否满足指定的条件
+
+=========================================================
+定义  
+private static Boolean checkString(String s,Predicate<String> pre){
+	return pre.test(s)
+	
+	return pre.negate().test(s)   //!pre.test(s)
+}
+
+调用
+Boolean b = checkString(hello,(String s) -> {return s.length>8})
+=========================================================定义两个条件判断
+private static Boolean checkString(String s,Predicate<String> pre1,Predicate<String> pre2){
+	//Boolean b1 =  pre1.test(s)
+	//Boolean b2 =  pre2.test(s)
+	
+	//boolean b = b1 && b2
+	//return b
+	
+	return pre1.and(pre2).test(s)或者 return pre1.or(pre2).test(s)
+}
+
+调用
+Boolean b = checkString(hello,(String s) -> {return s.length>8},(String s) -> {return s.length>18})

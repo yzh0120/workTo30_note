@@ -1,0 +1,9 @@
+1 删除  不需要返回值是因为可以通过异常来确定是否删除成功
+编写接口方法:    void del(int id)
+		参数      id
+		返回类型  void
+	
+编写Sql语句
+			<delete id="del">
+				delete user where id = #{id}
+			</delete>

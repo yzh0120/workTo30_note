@@ -1,0 +1,20 @@
+类加载器的作用
+    负责将.class文件 加载到内存中,并为之生成对应的lava.lang.class对象
+	
+	
+JVM的类加载机制 
+	全盘负责
+	父类委托
+	缓存机制
+	
+	
+java运行时具有以下内置加载器
+1
+2
+3
+System的父加载器是Platform,而Platform的父加载器是Bootstrap
+ClassLoader 的方法
+static ClassLoader getSystemClassLoader()  返回用于委派的系统类加载器
+
+ClassLoader getParent();返回父类加载器进行委派
+https://www.bilibili.com/video/BV18J411W7cE?p=396

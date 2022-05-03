@@ -1,0 +1,14 @@
+<vxe-modal v-model="alert" width="800" height="600" showFooter title="" @close="cancel">
+
+	<base-form :data="addApplyForm" ref="form" />
+
+	<template #footer>
+	<el-button @click="cancel" plain>取消</el-button>
+	<el-button type="primary" @click="confirm">确认</el-button>
+	</template>
+</vxe-modal>
+
+
+
+
+{ validator: self.$validator.numAndABC, trigger: ["blur","change"] }

@@ -1,0 +1,10 @@
+ArrayList<Integer>  array  =new ArrayList<Integer>()
+
+array.add(10)
+
+array.add("123")
+
+
+Class<? extends ArrayList > aClass.getMethod("add") = array.getClass();
+Method[] m =  aClass.getMethod("add",Object.class)
+m.invoke(array,"123")

@@ -1,0 +1,36 @@
+var mixins = {
+    data() {
+        return {}
+    },
+    methods: {
+        numberpoint(rule, value, callback) {
+            if (value) {
+                var reg = /^(\-|\+)?\d+(\.\d+)?$/;
+                if (reg.test(value) == false) {
+                    callback("请输入正数、负数和小数");
+                } else {
+                    callback();
+                }
+            } else {
+                callback();
+            }
+        },
+        number(rule, value, callback) {
+            if (value) {
+                var reg = /^\d+$/;
+                if (reg.test(value) == false) {
+                    callback("请输入正数");
+                } else {
+                    callback();
+                }
+            } else {
+                callback();
+            }
+        },
+    }
+}
+---------------------------------------------------------------------------------使用
+cshtml:
+@Html.AppendJsFile("/Areas/SecondCredit/Views/CreditCustomerInfo/Mixins.js")
+js:
+mixins: [mixins],

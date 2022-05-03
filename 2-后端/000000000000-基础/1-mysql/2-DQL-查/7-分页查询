@@ -1,0 +1,12 @@
+select
+	字段列表
+from
+	表名
+limit 
+	起始索引,查询条目数
+	
+起始索引(从0开始) = ( 当前页码 - 1 ) * 每页显示的条数
+
+select * from table1 limit 0,3;   从0开始查 ,查3条数据
+
+select * from table1 limit 3,3;   从3开始查 ,查3条数据

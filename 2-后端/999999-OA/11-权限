@@ -1,0 +1,15 @@
+userinfo: top.learun.clientdata.get(['userinfo']),
+
+
+
+userinfo.roleIds.includes(`30ccf856-467d-4167-bf1a-d2b37d1e1e22`)
+
+
+if (userinfo.userId == res.data.CreateUserId) {
+	this.isCreater = true;
+
+}
+
+
+
+taskHistroyInfo.IsCreator

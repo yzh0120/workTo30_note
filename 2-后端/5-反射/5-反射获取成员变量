@@ -1,0 +1,23 @@
+1 获取Class对象
+Class<?> c = Class.forName("com.xxx.Class")
+
+2  获取字段
+---------------------------------------------------------------------------
+	1 getFileIds    获取公共成员变量的方法
+	FileId[] fileids = c.getFileIds()
+	for(FileId fileid : fileids){
+		
+	}
+---------------------------------------------------------------------------	
+	2 getDeclaredFileIds  获取所有的成员变量的方法
+	FileId[] fileids = c.getDeclaredFileIds()
+---------------------------------------------------------------------------
+	3	getFileId(成员变量的名字)       获取单个成员变量的方法
+		FileId fileid = c.getFileId()
+		如何使用:
+				Constructor<?> con= c.getConstructor()
+				Object o = con.newInstance()
+				fileid.set(o,"西安	")
+---------------------------------------------------------------------------	
+	4  getDeclaredFileId(成员变量的名字)
+		FileId fileid = c.getDeclaredFileId()

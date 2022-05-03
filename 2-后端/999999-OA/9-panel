@@ -1,0 +1,24 @@
+<div class="panel panel-primary " >
+	
+	<div class="panel-heading">
+		<h1 class="panel-title">{{}}</h1>
+	</div>
+
+	<div class="panel-body">
+		<div class="table-responsive">
+			<table class="basic table table-bordered">
+				<tbody>
+					<tr>
+						<td>业务流水号</td>
+						<td>{{info.ApplyNo}}</td>
+						<td>保函编号</td>
+						<td>{{info.DecryptBaoHanNo ? info.DecryptBaoHanNo : info.BaoHanNo}}</td>
+						<td>项目编号</td>
+						<td>{{info.SerialNumber}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,9 @@
+1 查询所有
+编写接口方法:    selectAll()
+		参数     
+		返回类型  List
+	
+]编写Sql语句
+			<select id="selectAll" resultType="User">
+				select * from user;
+			</select>

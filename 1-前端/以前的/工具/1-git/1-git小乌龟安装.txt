@@ -1,0 +1,7 @@
+1-首先下载git for windows客户端    https://git-scm.com/download/win  ,安装过程没什么特别的，不停next就ok了 
+
+2.1 安装git小乌龟，https://tortoisegit.org/download/，同样的，一直next即可完成安装，但是，需要注意的是必须先安装git，在安装git小乌龟
+
+2.2  安装语言包，同样是https://tortoisegit.org/download/，然后一直next即可，要先装完小乌龟在安装语言包。
+
+2.3 右键→tortogit→setting，把language项改为中文，点击确定就可以了

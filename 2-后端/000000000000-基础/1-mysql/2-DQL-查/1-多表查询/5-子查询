@@ -1,0 +1,22 @@
+子查询:查询中嵌套查询
+
+
+
+根据查询结果不同 ,作用不同
+子查询的结果是单行单列:作为条件值 使用 = != > < 等进行条件判断
+		select 字段列表 from 表 where 字段名 = (子查询);
+		查询工资高于猪八戒的员工信息
+		select * from people where salary > (select salary from people where name = "猪八戒";)
+		
+
+子查询的结果是多行单列: 作为条件值,使用in等关键字进行条件判断
+			select 字段列表 from 表 where 字段名 in (子查询);
+			查询年龄是20-30范围内的员工信息
+			select * from people where id in (select id from people where age between 20 and 30)
+			select * from people where id in (1,2,3,4,6,7)
+
+
+子查询的结果是多行多列  作为虚拟表
+			select 字段列表 from (子查询) where 条件;
+			查询入职日期是"2022-11-11" 之后的员工信息和部门信息
+			select 字段列表 from (select * from people where date > "2022-11-11" ) t1 where t1.id = dep_table.id;

@@ -1,0 +1,27 @@
+没有 index 操作
+------------------------------------------------------------
+常用成员方法:
+
+boolean add(E e)  添加元素
+
+boolean remove(Object o) 从集合中移除指定的元素
+void clear()             清空元素的集合
+
+boolean contains(Object o) 判断集合是否包含元素
+
+boolean isEmpty() 判断集合是否为空
+
+int size() 集合的长度
+------------------------------------------------------------
+集合的遍历 Iterator
+方法 next()    hasNext()
+
+Collection<String> c = new Collection<String>()
+Iterator<String> it = c.iterator()   ctrl + alt + v ;快速生成左边
+
+if(it.hasNext()){ 是否存在下一个元素
+	it.next()  返回集合的下一个元素
+}
+while( whileit.hasNext() ){是否存在下一个元素
+	it.next()  返回集合的下一个元素
+}
