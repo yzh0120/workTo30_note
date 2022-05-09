@@ -1,0 +1,10 @@
+准入表   gx_oa_enterprise
+
+授信 gx_oa_businessacceptance
+
+保函  gx_oa_bh_guaranteeproject
+保理 gx_oa_wagesapply
+
+
+
+如何看子流程id  在 lr_wf_processinstance  通过 F_ProcessName 找到 F_SchemeCode区分流程 获得F_Id 到 task表寻找流程
