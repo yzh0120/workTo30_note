@@ -1,1 +1,1 @@
-GX_OAModule/Enterprise?Apply=1
+首页 :views/Home/AdminHome
