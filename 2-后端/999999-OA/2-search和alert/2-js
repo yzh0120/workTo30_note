@@ -1,0 +1,90 @@
+var id = request('id');//授信id
+var token;
+var bootstrap = function ($, learun) {
+    "use strict";
+    token = $.lrToken;
+}
+
+Vue.filter("formatDate", function (time) {
+    if (typeof (time) == "undefined" || time == "" || time == null) {
+        return "";
+    }
+    var date = time.replace(/ 0:00:00/g, '').replace(/ 00:00:00/g, '').replace(/T00:00:00/g, '');
+    if (date.length > 10) {
+        date = date.substring(0, 10);
+    }
+    if (date == "0001-01-01") {
+        date = "";
+    }
+    return date;
+})
+Vue.http.headers.common.Authorization = 'Bearer ' + top.$.accessToken;
+var vm = new Vue({
+    el: "#ChannelInfo",
+	mixins: [mixins],
+    data() {
+        return {
+            formSearch: {
+                
+            },
+            formAlert:{
+				
+			},
+            dialogVisible:false,
+            tableData: [],
+            pagerData: {
+                pageNo: 1, //第一页
+                pageSize: 20, //每页显示20张
+                total: 0, //总数
+            },
+        }
+    },
+    mounted() {
+        this.getData();
+    },
+    methods: {
+        search() {
+            this.pagerData.pageNo = 1
+            this.getData()
+        },
+        getData() {
+			
+        },
+		//取消
+		cancel(){
+		   this.$refs.formAlert.resetFields();
+		   this.dialogVisible = false
+		},
+		//确认
+        comfirm(){
+			
+		},
+        //重置表单
+        resetForm(formName) {
+            for (let key of Object.keys(this.form)) {
+                this.form[key] = ''
+            }
+        },
+        
+
+    },
+    watch: {
+        form: {
+            handler(newVal, oldVal) {
+                this.form.quarter ? this.monthDisabled = true : this.monthDisabled = false
+                this.form.month ? this.quarterDisabled = true : this.quarterDisabled = false
+            },
+            deep: true
+        },
+        "form.month": {
+            handler(newVal, oldVal) {
+                this.opMonthEnd = []
+                let num = this.form.month
+                let start = 12 - num;
+                for (let i = 0; i <= start; i++) {
+                    this.opMonthEnd.push({ value: num + i })
+                }
+            }
+        }
+    }
+})
