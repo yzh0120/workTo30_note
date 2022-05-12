@@ -1,0 +1,34 @@
+git 合并指定文件或文件夹
+https://www.cnblogs.com/bky419/p/15190767.html
+
+
+步骤：
+
+1.切换到 dev_new 分支，并拉取最新代码
+
+git checkout dev_new
+git pull
+2.切换到 test分支， 并拉取最新代码
+
+git checkout test
+git pull
+3. 合并 dev_new分支的指定文件或文件夹（需要合并到test分支就切换到test分支，再执行以下指令）
+
+git checkout dev_new src/main.js
+git checkout dev_new src/view/folderName
+注意：合并之前，确保两个分支的代码都是最新的。
+
+ 
+
+4.可以在vscode编辑器查看此次拉取变动的代码是否有冲突或是否符合dev_new的情况，然后进行修改
+
+注意：在合并完指定文件或文件夹后，在vscode编辑器中会产生改动记录。如果不是自己需要合并的内容可以在vscode上直接撤销，然后就只用提交自己的那部分就好了。
+
+ 
+
+5.将此次合并的代码提交到 test分支的远程仓库
+
+git add .
+
+git commit -m "提交说明"
+git push

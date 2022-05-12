@@ -1,0 +1,30 @@
+
+
+git 合并某个分支上某次commit记录到另外一个分支
+https://www.cnblogs.com/wjxbk/p/15469212.html
+
+git 新建分支、合并分支或合并指定提交记录
+https://www.jianshu.com/p/b373334760f1
+
+--------------------------------------------------
+
+git 合并某个分支上某次commit记录到另外一个分支
+需求：需要将A分支的某次提交记录 ，合并到B分支
+
+
+
+ 
+
+解决步骤：
+
+1）git checkout A分支
+
+　　找到提交的commit id 可以使用git log 命令 或者 右键上次提交的记录 copy reversion number
+
+2) 切回到 B分支 
+
+　　使用 git cherry-pick 提交记录ID ，回车即可
+
+ 
+
+如果遇到问题，可以使用 git cherry-pick --abort 命令 放弃本次合并的需要
