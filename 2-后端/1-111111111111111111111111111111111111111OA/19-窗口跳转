@@ -1,0 +1,15 @@
+if (type == 0) {
+	//前面的窗口
+	//urlType = "apply"
+	//fullName = "申请列表";
+	if (top.learun.frameTab.parentIframe() && top.learun.frameTab.parentIframe().refreshGirdData) {
+		top.learun.frameTab.parentIframe().refreshGirdData();
+	}
+	top.learun.frameTab.close(currentId);
+} else {
+	//指定页面
+	urlType = "waitaudit"
+	fullName = "用款-待审列表";
+	top.learun.frameTab.open({ F_ModuleId: top.learun.newGuid(), F_Icon: 'fa fa-file-text-o', F_FullName: fullName, F_UrlAddress: "/GX_OAModule/WagesApply/Index?type=" + urlType + "&productType=" + productType });
+	top.learun.frameTab.close(currentId);
+}

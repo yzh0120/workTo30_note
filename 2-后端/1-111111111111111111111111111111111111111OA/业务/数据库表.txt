@@ -1,10 +1,44 @@
 准入表   gx_oa_enterprise
-
+--------------------------------------------------------------------
 授信 gx_oa_businessacceptance
+
+在用款申请页面
+<1>公司名称:
+F_source      0 自理  1建行
+F_projectType   1 工资 2 材料
+
+<2>项目名称:
+
+建行:
+建行在授信起始日期一个星期                                PreCredExpDate  截止日期
+if (date <= 7 && date >= 0 && item.F_Source === 1 && !item.F_CreditStartDate) {
+	isccb = true;
+}
+
+自有 
+在授信起始日期  15天或者授信截止期                     F_CreditStartDate '授信起始时间',
+ if ((new Date()).DateDiff('d', new Date(item.F_CreditEndDate)) >= 15 && item.F_CreditEndDate && item.F_Source !== 1) {
+	isbl = true;
+}
+
+--------------------------------------------------------------------
 
 保函  gx_oa_bh_guaranteeproject
 保理 gx_oa_wagesapply
 
+--------------------------------------------------------------------
+
+如何看子流程id  在 lr_wf_processinstance  通过 F_ProcessName 找到 F_SchemeCode(项目编码)区分流程 获得F_Id 到 task表寻找流程
+
+如何看子流程id  在 lr_wf_processinstance  通过  F_SchemeCode(流程编码) 找到 F_ProcessName 区分流程 获得F_Id 到 task表匹配F_ProcessId寻找流程
 
 
-如何看子流程id  在 lr_wf_processinstance  通过 F_ProcessName 找到 F_SchemeCode区分流程 获得F_Id 到 task表寻找流程
+--------------------------------------------------------------------
+
+
+
+164       自有oa测试库
+
+190  中小担 guarantee_uat
+
+225     笔记本数据库

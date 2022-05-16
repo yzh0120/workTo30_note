@@ -18,7 +18,7 @@ this.$http.get(`/GX_OAModule/Statistics/GetTeamMember?teamId=${this.searchForm.t
                 }
             }, err => { })
 ---------------------------------------------------------------------------------------------
-that.$http.post("/Guarantee/SignContract/BatchSignature?ids=" + item.Id, { __RequestVerificationToken: $.lrToken }, { emulateJSON: true }).then(result => {
+this.$http.post("/Guarantee/SignContract/BatchSignature?ids=" + item.Id, { __RequestVerificationToken: $.lrToken }, { emulateJSON: true }).then(result => {
                         top.learun.loading(false);
                         top.layer.close(index);
                         var res = result.data;

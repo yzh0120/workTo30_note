@@ -1,7 +1,7 @@
 <filelist projectid="123 " :uploadlist="uploadList1"></filelist>
 
 
-
+<onefile :uploadobj="uploadobj"  projectid="123 "><onefile>
 
 
 @Html.Partial("/Areas/Guarantee/Views/Components/FileList.cshtml")

@@ -1,0 +1,10 @@
+operator: 2,   绝对相等   适用于下拉框
+
+operator: 8,   模糊匹配   适用于输入框
+
+
+
+operator: 4,   大于此字段         min
+
+
+operator: 1,  小于此字段          max   
