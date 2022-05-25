@@ -44,6 +44,7 @@
                 <div class="text-center">
                     <el-button type="primary" @@click="search">搜索</el-button>
                     <el-button type="warning" @@click="resetForm">重置</el-button>
+					<el-button type="warning" @@click="add">新增</el-button>
                 </div>
             </div>
 
@@ -68,14 +69,26 @@
 	@*弹窗*@
 	<el-dialog title="提示" :visible.sync="dialogVisible" width="80%" :before-close="cancel">
 		<div style="height: 60vh; overflow: auto;">
-			<el-form ref="formAlert" :model="formAlert" label-width="180px" v-if="dialogVisible" ref="formAlert" style="width:98%">
+			<el-form ref="formAlert" :model="formAlert" label-width="180px" v-if="dialogVisible"  style="width:98%">
 					<el-row :gutter="20">
 						<el-col :span="12">
-							<el-form-item label="筛选方式" prop="year">
+							<el-form-item label="筛选方式" prop="year" :rules="[{required:true,message:'不能为空',trigger:'blur'},{validator:this.positivenumberpoint,trigger:'blur'}]">
 								<el-input v-model="formAlert.input" placeholder="请输入内容"></el-input>
 							</el-form-item>
 						</el-col>
+						
+						<el-col :span="12">
+							<el-form-item label="筛选方式" prop="year">
+								<el-select v-model="formAlert.value" placeholder="请选择">
+								    <el-option label="" value=""></el-option>
+								  </el-select>
+							</el-form-item>
+						</el-col>
 					</el-row>
+					
+					
+					
+					
 			</el-form>
 		</div>
 		

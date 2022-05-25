@@ -1,6 +1,7 @@
 准入表   gx_oa_enterprise
 --------------------------------------------------------------------
-授信 gx_oa_businessacceptance
+授信表    gx_oa_businessacceptance
+车险授信	 cx_credit
 
 在用款申请页面
 <1>公司名称:
@@ -23,14 +24,18 @@ if (date <= 7 && date >= 0 && item.F_Source === 1 && !item.F_CreditStartDate) {
 
 --------------------------------------------------------------------
 
-保函  gx_oa_bh_guaranteeproject
-保理 gx_oa_wagesapply
+保函表  gx_oa_bh_guaranteeproject
+
+保理表  工资 材料 gx_oa_wagesapply
+保理表  佣金 commissionadvance
+保理表  车险 cx_project
 
 --------------------------------------------------------------------
 
-如何看子流程id  在 lr_wf_processinstance  通过 F_ProcessName 找到 F_SchemeCode(项目编码)区分流程 获得F_Id 到 task表寻找流程
+//如何看子流程id  在 lr_wf_processinstance  通过 F_ProcessName 找到 F_SchemeCode(项目编码)区分流程 获得F_Id 到 task表寻找流程
 
-如何看子流程id  在 lr_wf_processinstance  通过  F_SchemeCode(流程编码) 找到 F_ProcessName 区分流程 获得F_Id 到 task表匹配F_ProcessId寻找流程
+如何看子流程id  在 lr_wf_processinstance  通过  F_SchemeCode(流程编码) 找到 F_ProcessName(项目编码)区分流程 获得F_Id 到 task表寻找流程
+ 区分流程 获得F_Id 到 task表匹配F_ProcessId寻找流程
 
 
 --------------------------------------------------------------------

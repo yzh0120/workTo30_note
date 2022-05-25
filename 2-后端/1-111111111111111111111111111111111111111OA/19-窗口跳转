@@ -1,3 +1,5 @@
+var currentId = top.learun.frameTab.iframeId;
+
 if (type == 0) {
 	//前面的窗口
 	//urlType = "apply"
@@ -13,3 +15,6 @@ if (type == 0) {
 	top.learun.frameTab.open({ F_ModuleId: top.learun.newGuid(), F_Icon: 'fa fa-file-text-o', F_FullName: fullName, F_UrlAddress: "/GX_OAModule/WagesApply/Index?type=" + urlType + "&productType=" + productType });
 	top.learun.frameTab.close(currentId);
 }
+
+
+F_ModuleId: top.learun.newGuid(), F_Icon: 'fa fa-file-text-o', F_FullName: "退费申请", F_UrlAddress: "/EleGuarantee/EleGuarantee/TuiFeiApply"});

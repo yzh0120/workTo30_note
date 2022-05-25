@@ -1,0 +1,41 @@
+var id = request('id');//id
+var token;
+var bootstrap = function ($, learun) {
+	"use strict";
+	token = $.lrToken;
+}
+
+Vue.filter("formatDate", function (time) {
+	if (typeof (time) == "undefined" || time == "" || time == null) {
+		return "";
+	}
+	var date = time.replace(/ 0:00:00/g, '').replace(/ 00:00:00/g, '').replace(/T00:00:00/g, '');
+	if (date.length > 10) {
+		date = date.substring(0, 10);
+	}
+	if (date == "0001-01-01") {
+		date = "";
+	}
+	return date;
+})
+Vue.http.headers.common.Authorization = 'Bearer ' + top.$.accessToken;
+var vm = new Vue({
+	el: "#TuiFeiDetail",
+	mixins: [mixins],
+	data() {
+		return {
+		
+		}
+	},
+	mounted() {
+		/*this.getData();*/
+	},
+	methods: {
+		
+
+
+	},
+	watch: {
+
+	}
+})

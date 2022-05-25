@@ -1,0 +1,32 @@
+Vue.component('tbaudit', {
+    template: `#tbaudit`,
+    props: {
+			//主表
+			bhdata: {
+				type: Object,
+				default: () => { },
+			},
+			// 当前流程集合
+			tasklist: {
+				type: Array,
+				default: () => {
+					return []
+				},
+			},
+},
+    data() {
+        return {
+            loading: false,
+        };
+    },
+    created() {
+
+    },
+    methods: {
+    
+
+     
+
+ 
+    },
+})

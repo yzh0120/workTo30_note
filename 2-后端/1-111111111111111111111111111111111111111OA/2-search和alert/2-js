@@ -69,17 +69,30 @@ var vm = new Vue({
 		   this.$refs.formAlert.resetFields();
 		   this.dialogVisible = false
 		},
-		//确认
-        comfirm(){
-			
-		},
+	
         //重置表单
         resetForm(formName) {
             for (let key of Object.keys(this.formSearch)) {
                 this.formSearch[key] = ''
             }
         },
-		  /* //带表格的弹窗确认 确认
+		 /* 
+		 //新增
+		 add(){
+		 			  this.dialogVisible  = true
+		 },
+		 */
+		
+		  /*
+		  //编辑
+		  edit(row){
+		  			  this.add()
+		  			  this.formAlert = this.deepClone(row)
+		  }
+		  */ 
+		 
+		  /* 
+		  //带表格的弹窗确认 确认
 		        comfirm() {
 		            this.$refs.formAlert.validate((valid) => {
 		                if (valid) {
@@ -110,7 +123,7 @@ var vm = new Vue({
 		                        list.push(Object.assign({}, e, obj))
 		                    })
 		                    top.learun.loading(true, "正在加载数据");
-		                    top.learun.gxhttpAsync('POST', `/PerFormance/AppraisalInfo/SaveList`, { __RequestVerificationToken: token, list: list }, function (res) {
+		                    top.learun.gxhttpAsync('POST', `/PerFormance/AppraisalInfo/SaveList`, { __RequestVerificationToken: token, entity: list }, function (res) {
 		                        top.learun.loading(false);
 		                        if (res.code == 200) {
 		                            self.search()

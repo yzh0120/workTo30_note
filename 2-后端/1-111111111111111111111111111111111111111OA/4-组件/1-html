@@ -1,0 +1,11 @@
+<script type="text/template" id="tbaudit">
+    <div>
+        
+    </div>
+</script>
+
+
+@Html.Partial("~/Areas/Guarantee/Views/GuaranteeLyProject/ProcessComponent/Components/TbFlow/CwcsAudit.cshtml")
+@Html.AppendJsFile("/Areas/Guarantee/Views/GuaranteeLyProject/ProcessComponent/Components/TbFlow/CwcsAudit.js")
+
+

@@ -1,0 +1,42 @@
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_GxForm.cshtml";
+}
+<style>
+    body {
+        overflow-y: auto;
+        padding: 0 10px;
+        font-size: 14px;
+        background: #fff;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    #TuiFeiApply {
+        padding: 20px 0;
+    }
+</style>
+<div id="TuiFeiDetail">
+
+
+
+
+
+
+</div>
+
+
+
+@Html.AppendJsFile("/Areas/GX_OAModule/Views/BusinessAcceptance/Mixins.js")
+
+@Html.Partial("~/Areas/EleGuarantee/Views/EleGuarantee/TuiFeiAudit.cshtml")
+@Html.AppendJsFile("/Areas/EleGuarantee/Views/EleGuarantee/TuiFeiAudit.js")
+
+
+@Html.Partial("/Areas/Guarantee/Views/Components/BasePager.cshtml")
+@Html.AppendJsFile("/Areas/Guarantee/Views/Components/BasePager.js")
+
+@Html.AppendJsFile("/Areas/EleGuarantee/Views/EleGuarantee/TuiFeiDetail.js")
