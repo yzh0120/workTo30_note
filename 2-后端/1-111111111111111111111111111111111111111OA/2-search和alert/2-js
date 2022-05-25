@@ -96,6 +96,7 @@ var vm = new Vue({
 		        comfirm() {
 		            this.$refs.formAlert.validate((valid) => {
 		                if (valid) {
+							
 		                    if (this.formAlert.GroupName != `风险经理`) {
 		                        let checkOK = true;
 		                        try {
@@ -113,15 +114,14 @@ var vm = new Vue({
 		                        }
 		                        if (!checkOK) return;
 		                    }
+							let list = []
+							this.tableDataAlert.forEach((e) => {
+							    let obj = this.deepClone(this.formAlert)
+							    console.log(obj.AuditUserId,"AuditUserId")
+							    list.push(Object.assign({}, e, obj))
+							})
+							
 		                    var self = this;         //默认就是form Data
-		
-		
-		                    let list = []
-		                    this.tableDataAlert.forEach((e) => {
-		                        let obj = this.deepClone(this.formAlert)
-		                        console.log(obj.AuditUserId,"AuditUserId")
-		                        list.push(Object.assign({}, e, obj))
-		                    })
 		                    top.learun.loading(true, "正在加载数据");
 		                    top.learun.gxhttpAsync('POST', `/PerFormance/AppraisalInfo/SaveList`, { __RequestVerificationToken: token, entity: list }, function (res) {
 		                        top.learun.loading(false);
