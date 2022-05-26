@@ -52,7 +52,7 @@ var vm = new Vue({
 			/*this.loading = true
 			var pagination = JSON.stringify({ "rows": this.pagerData.pageSize, "page": this.pagerData.pageNo });
 			var self = this;  
-			var queryJson = JSON.stringify(this.form);
+			var queryJson = JSON.stringify(this.formSearch);
 			top.learun.gxhttpAsync('GET', `/PerFormance/AppraisalInfo/GetPageList?queryJson=${queryJson}&pagination=${pagination}`,
 				{ __RequestVerificationToken: token }, function (res) {
 					self.loading = false;
@@ -136,7 +136,10 @@ var vm = new Vue({
 		                } else {
 		
 		                }
-		            })*/
+		            })
+					
+					}
+					*/
 					
 			/*	export1() {
 					var queryJson = JSON.stringify(this.form);
@@ -171,24 +174,5 @@ var vm = new Vue({
         
 
     },
-    watch: {
-        
-        /*		form: {
-        			handler(newVal, oldVal) {
-        				this.form.quarter ? this.monthDisabled = true : this.monthDisabled = false
-        				this.form.month ? this.quarterDisabled = true : this.quarterDisabled = false
-        			},
-        			deep: true
-        		},
-        		"form.month": {
-        			handler(newVal, oldVal) {
-        				this.opMonthEnd = []
-        				let num = this.form.month
-        				let start = 12 - num;
-        				for (let i = 0; i <= start; i++) {
-        					this.opMonthEnd.push({ value: num + i })
-        				}
-        			}
-        		}*/
-    }
+
 })

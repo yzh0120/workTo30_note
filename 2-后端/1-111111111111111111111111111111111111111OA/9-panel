@@ -28,3 +28,7 @@
                         <span>{{ item.TaskName }}</span>
                     </div>
 </panel>
+
+
+@Html.Partial("/Areas/Guarantee/Views/Components/Panel.cshtml")
+@Html.AppendJsFile("/Areas/Guarantee/Views/Components/Panel.js")

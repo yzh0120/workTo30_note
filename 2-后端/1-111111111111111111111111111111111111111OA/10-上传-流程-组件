@@ -1,0 +1,13 @@
+
+<filelist :projectid="info.projectid" :uploadlist="uploadlist"></filelist>
+@Html.Partial("/Areas/Guarantee/Views/Components/FileList.cshtml")
+@Html.AppendJsFile("/Areas/Guarantee/Views/Components/FileList.js")
+
+
+<onefile btntext="点击上传台账" url="/Guarantee/EleGuarantee/ImportExcel" @@success="success" :uploadobj="{num:1,detail:[]}"><onefile>
+
+
+
+流程
+@Html.Partial("~/Areas/Guarantee/Views/GuaranteeLyProject/ProcessComponent/MainTask.cshtml")
+@Html.AppendJsFile("/Areas/Guarantee/Views/GuaranteeLyProject/ProcessComponent/MainTask.js")

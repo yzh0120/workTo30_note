@@ -29,16 +29,22 @@
             </div>
             <div class="panel-body">
                 <el-form :model="formSearch" ref="formSearch" size="small" :inline="true" label-width="120px">
-                    <el-form-item label="筛选方式" prop="year">
+                    <el-form-item label="" prop="">
                         <el-input v-model="formSearch.input" placeholder="请输入内容"></el-input>
                     </el-form-item>
 					
-					 <el-form-item label="年月开始" prop="year">
+					<el-form-item label="" prop="">
+						<el-select v-model="formSearch.CollectionType" placeholder="请选择">
+							<el-option label="银行收费" value="0"></el-option>
+							<el-option label="微信收费" value="1"></el-option>
+							<el-option label="支付宝收费" value="2"></el-option>
+						</el-select>
+					</el-form-item>
+					
+					 <el-form-item label="" prop="">
 						<el-date-picker v-model="formSearch.YearMonthStart" value-format="yyyyMM" type="month" placeholder="选择年月开始" clearable></el-date-picker>
 					</el-form-item>
-					<el-form-item label="年月结束" prop="year">
-						<el-date-picker v-model="formSearch.YearMonthEnd" value-format="yyyyMM" type="month" placeholder="选择年月结束" clearable></el-date-picker>
-					</el-form-item>
+					
                 </el-form>
 
                 <div class="text-center">
@@ -72,16 +78,22 @@
 			<el-form ref="formAlert" :model="formAlert" label-width="180px" v-if="dialogVisible"  style="width:98%">
 					<el-row :gutter="20">
 						<el-col :span="12">
-							<el-form-item label="筛选方式" prop="year" :rules="[{required:true,message:'不能为空',trigger:'blur'},{validator:this.positivenumberpoint,trigger:'blur'}]">
+							<el-form-item label="" prop="" :rules="[{required:true,message:'不能为空',trigger:'blur'},{validator:this.positivenumberpoint,trigger:'blur'}]">
 								<el-input v-model="formAlert.input" placeholder="请输入内容"></el-input>
 							</el-form-item>
 						</el-col>
 						
 						<el-col :span="12">
-							<el-form-item label="筛选方式" prop="year">
-								<el-select v-model="formAlert.value" placeholder="请选择">
+							<el-form-item label="" prop="">
+								<el-select v-model="formAlert.value" placeholder="请选择" style="width:100%">
 								    <el-option label="" value=""></el-option>
 								  </el-select>
+							</el-form-item>
+						</el-col>
+						
+						<el-col :span="12">
+							<el-form-item label="" prop="">
+								<el-date-picker v-model="formAlert.YearMonthStart" style="width:100%" value-format="yyyy-MM-dd" type="month" placeholder="选择年月开始" clearable></el-date-picker>
 							</el-form-item>
 						</el-col>
 					</el-row>
