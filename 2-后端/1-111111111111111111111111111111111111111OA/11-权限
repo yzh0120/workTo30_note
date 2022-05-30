@@ -13,3 +13,8 @@ if (userinfo.userId == res.data.CreateUserId) {
 
 
 taskHistroyInfo.IsCreator
+
+
+
+
+departmentIds

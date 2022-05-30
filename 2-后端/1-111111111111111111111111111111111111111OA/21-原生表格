@@ -1,0 +1,19 @@
+    <panel>
+        <div slot="header" class="clearfix">
+            <span></span>
+        </div>
+        <table class="table table-bordered table-hover table-striped">
+            <tbody>
+                <tr>
+                    <th>流程编号</th>
+                    <td>{{info.SerialNumber}}</td>
+                    <th>审批状态说明</th>
+                    <td>{{info.AuditStatus}}</td>
+                    <th>退费原因</th>
+                    <td>{{info.RefundReason}}</td>
+                </tr>
+                
+
+            </tbody>
+        </table>
+    </panel>

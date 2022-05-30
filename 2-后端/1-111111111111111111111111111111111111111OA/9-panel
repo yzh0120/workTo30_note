@@ -23,7 +23,7 @@
 
 </div>
 ------------------------
- <panel v-for="(item, index) in history.taskList" :key="index">
+ <panel >
                     <div slot="header" class="clearfix">
                         <span>{{ item.TaskName }}</span>
                     </div>

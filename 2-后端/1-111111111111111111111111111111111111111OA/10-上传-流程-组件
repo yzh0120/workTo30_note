@@ -3,9 +3,35 @@
 @Html.Partial("/Areas/Guarantee/Views/Components/FileList.cshtml")
 @Html.AppendJsFile("/Areas/Guarantee/Views/Components/FileList.js")
 
+--------------------------------------------------
+<onefile btntext="点击上传台账" url="/Guarantee/EleGuarantee/ImportExcel" @@success="success" :uploadobj="{num:1,detail:[]}"></onefile>
 
-<onefile btntext="点击上传台账" url="/Guarantee/EleGuarantee/ImportExcel" @@success="success" :uploadobj="{num:1,detail:[]}"><onefile>
-
+ <onefile :projectid="uuid" :uploadobj="uploadobj" @@success="(e)=>upLoadSuccess(e.res,e.taskName)"></onefile>
+ @Html.Partial("/Areas/Guarantee/Views/Components/OneFile.cshtml")
+ @Html.AppendJsFile("/Areas/Guarantee/Views/Components/OneFile.js")
+ 
+ 
+getFile(taskName) {
+			this.$http.get("/GX_OAModule/Annexes/GetAnnexesFileList?proId=" + this.uuid + "&taskName=" + taskName).then(res => {
+				var result = res.data;
+				if (result.code == 200) {
+					this.uploadobj.detail = result.data;
+				}
+			})
+		},
+		upLoadSuccess(res, taskName) {
+			console.log(res, taskName,"res, taskName")
+			if (res.code == 200) {
+				this.$message.success(res.data.F_FileName + "上传成功！");
+				this.getFile(taskName)
+			} else {
+				this.$message.error(res.info)
+			}
+		},
+ --------------------------------------
+ <fileListshow :arr="item.detail"></fileListshow>
+@Html.Partial("/Areas/Guarantee/Views/Components/FileListShow.cshtml")
+@Html.AppendJsFile("/Areas/Guarantee/Views/Components/FileListShow.js")
 
 
 流程

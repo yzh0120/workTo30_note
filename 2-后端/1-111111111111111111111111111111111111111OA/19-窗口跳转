@@ -17,4 +17,4 @@ if (type == 0) {
 }
 
 
-F_ModuleId: top.learun.newGuid(), F_Icon: 'fa fa-file-text-o', F_FullName: "退费申请", F_UrlAddress: "/EleGuarantee/EleGuarantee/TuiFeiApply"});
+top.learun.frameTab.open({F_ModuleId: top.learun.newGuid(), F_Icon: 'fa fa-file-text-o', F_FullName: "退费申请", F_UrlAddress: "/EleGuarantee/EleGuarantee/TuiFeiApply"});
