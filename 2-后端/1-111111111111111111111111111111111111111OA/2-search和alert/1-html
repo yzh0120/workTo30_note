@@ -61,7 +61,7 @@
 	
 	 @*表格*@
     <el-table :data="tableData" border style="width: 98%;margin:0 auto" height="65vh" v-loading="loading">
-        <el-table-column prop="date" label="退单笔数"> </el-table-column>
+        <el-table-column prop="date" label="退单笔数" width="140"> </el-table-column>
       @*<el-table-column label="操作" width="180" fixed="right">
             <template slot-scope="scope">
                     <el-button size="mini" @@click="edit(scope.row,scope.$index)">编辑</el-button>

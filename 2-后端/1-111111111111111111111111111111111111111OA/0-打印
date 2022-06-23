@@ -1,28 +1,29 @@
 print() {
-                 var self = this;         //默认就是form Data
-                            //top.learun.loading(true, "正在加载数据");
-                            top.learun.gxhttpAsync('get', `/GX_OAModule/ChannelPerformance/BatchPrintItem?idList=${id}`, { __RequestVerificationToken: token }, function (res) {
-                                //top.learun.loading(false);
-                                if (res.code == 200) {
-                                    self.sectionNotice = res.data
-                                    self.printDate = new Date();
-                                    self.$nextTick(() => {
-                                        var headstr = "<html><head><title></title></head><body>";
-                                        var footstr = "</body></html>";
-                                        var printData = document.getElementById("printtbNotices").innerHTML; //获得 div 里的所有 html 数据
-                                        var wind = window.open("", "_blank",
-                                            "toolbar=no,scrollbars=yes,menubar=no,width=1200,height=800");
-                                        wind.document.body.innerHTML = headstr + printData + footstr;
-                                        wind.document.body.style.fontFamily = "仿宋";
-                
-                
-                                        wind.print();
-                                        wind.close();
-                                    })
-                                } else {
-                                    self.$message.error(res.info)
-                                }
-            },
+            var self = this;         //默认就是form Data
+            //top.learun.loading(true, "正在加载数据");
+            top.learun.gxhttpAsync('get', `/GX_OAModule/ChannelPerformance/BatchPrintItem?idList=${id}`, { __RequestVerificationToken: token }, function (res) {
+                //top.learun.loading(false);
+                if (res.code == 200) {
+                    self.sectionNotice = res.data
+                    self.printDate = new Date();
+                    self.$nextTick(() => {
+                        var headstr = "<html><head><title></title></head><body>";
+                        var footstr = "</body></html>";
+                        var printData = document.getElementById("printtbNotices").innerHTML; //获得 div 里的所有 html 数据
+                        var wind = window.open("", "_blank",
+                            "toolbar=no,scrollbars=yes,menubar=no,width=1200,height=800");
+                        wind.document.body.innerHTML = headstr + printData + footstr;
+                        wind.document.body.style.fontFamily = "仿宋";
+
+
+                        wind.print();
+                        wind.close();
+                    })
+                } else {
+                    self.$message.error(res.info)
+                }
+            })
+        }
 			-----------------------------------首付款 模板
     <div id="printWithhold" style="display: none; font-size: 10px; width: 240mm; height: 120mm;">
         <h2 style="text-align:center;padding:0;margin:0;">付款通知书</h2>
@@ -156,3 +157,55 @@ print() {
             </div>
 
         </div>
+		
+--------------------------------------------------流程打印
+print() {
+            var self = this;         //默认就是form Data
+            top.learun.loading(true, "正在加载数据");
+            top.learun.gxhttpAsync('get', `/GX_OAModule/EleGuaranteeRefund/NoticePrintBatchManagePrint?idList=${id}`, { __RequestVerificationToken: token }, function (res) {
+                top.learun.loading(false);
+                if (res.code == 200) {
+					/* self.sectionNotice = res.data*/
+					let arr = []
+					res.data.forEach((item1, index1) => {
+
+						let obj = {}
+						obj.start = item1.Entity
+						item1.PointDatas.forEach((item, index) => {
+							if (item.Type == "开始") {
+
+							} else if (item.Type == "财务审核") {
+								obj.caiwuShenHe = item
+							} else if (item.Type.includes("财务退费")) {
+								obj.caiwuTuiFei = item
+							} else if (item.Type == "总经理") {
+								obj.boss = item
+							}
+
+
+						})
+						arr.push(obj)
+					})
+					self.sectionNotice = arr
+                /*    self.printDate = new Date();*/
+                    self.$nextTick(() => {
+                        var headstr = "<html><head><title></title></head><body>";
+                        var footstr = "</body></html>";
+                        var printData = document.getElementById("printtbNotices").innerHTML; //获得 div 里的所有 html 数据
+                        var wind = window.open("", "_blank",
+                            "toolbar=no,scrollbars=yes,menubar=no,width=1200,height=800");
+                        wind.document.body.innerHTML = headstr + printData + footstr;
+                        wind.document.body.style.fontFamily = "仿宋";
+
+
+                        wind.print();
+                        wind.close();
+                    })
+                } else {
+                    self.$message.error(res.info)
+                }
+            })
+        }
+	
+this.$nextTick(() => {
+	F:\SVN\OA\tags\20200309\Learun.Application.Web\Areas\GX_OAModule\Views\ChannelPerformance\Index.js

@@ -44,10 +44,12 @@ var vm = new Vue({
         this.getData();
     },
     methods: {
+		//搜索
         search() {
             this.pagerData.pageNo = 1
             this.getData()
         },
+		//获取数据
         getData() {
 			/*this.loading = true
 			var pagination = JSON.stringify({ "rows": this.pagerData.pageSize, "page": this.pagerData.pageNo });
@@ -66,6 +68,7 @@ var vm = new Vue({
 		},
 		//取消
 		cancel(){
+			this.$refs.formAlert = {}
 		   this.$refs.formAlert.resetFields();
 		   this.dialogVisible = false
 		},
@@ -142,8 +145,8 @@ var vm = new Vue({
 					*/
 					
 			/*	export1() {
-					var queryJson = JSON.stringify(this.form);
-					location.href = top.$.rootUrl + `/PerFormance/AppraisalInfo/Export?StartMonth=${this.form.StartMonth}&EndMonth=${this.form.EndMonth}&GroupName=${this.form.GroupName}&AuditUserId=${this.form.AuditUserId}`;
+					var queryJson = JSON.stringify(this.formSearch);
+					location.href = top.$.rootUrl + `/PerFormance/AppraisalInfo/Export?queryJson=${queryJson}`;
 				},*/
 		
 		/*        //删除

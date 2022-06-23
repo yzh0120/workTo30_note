@@ -1,0 +1,41 @@
+//发通知
+        UpdateHeGuiIsFisnsh1(row) {
+            var self = this;         //默认就是form Data
+            top.learun.loading(true, "正在提交");
+            top.learun.gxhttpAsync('get', `/Guarantee/GuaranteeLyProject/UpdateHeGuiIsFisnsh?keyValue=${row.Id}&type=0`, {}, function (res) {
+                top.learun.loading(false);
+                if (res.code == 200) {
+                    self.$message.success(res.info)
+                } else {
+                    self.$message.error(res.info)
+                }
+            });
+        },
+--------------------------------------------------------------
+//获取通知
+        getAllNoticeByProjectId(type) {
+            this.$http.get("/Guarantee/GuaranteeNotice/GetAllNoticeByProjectId?projectId=" + companyId + "&type=" + type).then(result => {
+                var res = result.data;
+                if (res.code == 200) {
+                    if (type == 1) {//获取是否有完整的工程量清单记录
+                        this.gclqdList = res.data.filter(item => item.NotifierName == "造价师");
+                    } else if (type == 12) {//获取子流程发起记录
+                        this.zlcList = res.data.filter(item => item.NotifierName == "格式复核");
+                    } else if (type == 13) {//获取初审通知A角填写客户保函收件信息
+                        this.bhsjxxList = res.data;
+                    } else if (type == 18) {//获取业务已落实风控初审意见信息
+                        this.lsfkcsyjList = res.data;
+                    } else if (type == 3) {//获取资料到达通知信息
+                        this.zlddtzList = res.data.filter(item => item.Title == "资料到达通知");
+                    } else if (type == 19) {//资料未齐
+                        this.zlwqtzList = res.data;
+                    }
+                } else {
+                    this.$message.error(res.info);
+                }
+            })
+        },
+		
+<div v-for="(item,index) in gclqdList" :key="index" style="color:#A14DEA;font-size:18px;">
+            第{{index+1}}次记录：{{item.Content}}，时间：{{item.CreateDate}}
+        </div>

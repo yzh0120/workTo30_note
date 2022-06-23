@@ -1,0 +1,5 @@
+:rules="[{validator:this.positivenumberpointAndRequire,trigger:'blur'}]"     正数和小数  必填
+
+:rules="[{validator:this.positivenumberpoint,trigger:'blur'}]"           正数和小数
+
+:rules="[{validator:this.positivenumber,trigger:'blur'}]"             正数
