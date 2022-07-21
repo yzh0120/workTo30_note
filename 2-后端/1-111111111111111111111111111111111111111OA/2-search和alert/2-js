@@ -18,6 +18,17 @@ Vue.filter("formatDate", function (time) {
     }
     return date;
 })
+
+Vue.filter("formatAcc", function (val) {
+	if (val) {
+		val = val + ""
+		let reg = new RegExp(`(.{4})`, 'g')
+		return val.replace(reg, "$1 ")
+	} else {
+		return ""
+	}
+})
+
 Vue.http.headers.common.Authorization = 'Bearer ' + top.$.accessToken;
 var vm = new Vue({
     el: "#ChannelInfo",
@@ -79,51 +90,26 @@ var vm = new Vue({
                 this.formSearch[key] = ''
             }
         },
-		 /* 
+		  
 		 //新增
 		 add(){
 		 			  this.dialogVisible  = true
 		 },
-		 */
+		 
 		
-		  /*
+		  
 		  //编辑
 		  edit(row){
 		  			  this.add()
 		  			  this.formAlert = this.deepClone(row)
 		  }
-		  */ 
+		  *
 		 
-		  /* 
+		  
 		  //带表格的弹窗确认 确认
 		        comfirm() {
 		            this.$refs.formAlert.validate((valid) => {
 		                if (valid) {
-							
-		                    if (this.formAlert.GroupName != `风险经理`) {
-		                        let checkOK = true;
-		                        try {
-		                            this.tableDataAlert.forEach((item) => {
-		                                
-		                                if (!item.SettingValue) {
-		                                    this.$message.error(`配置编码必选`);
-		                                    checkOK = false;
-		                                    throw new Error("EndIterative");
-		                                }
-		                                
-		                            });
-		                        } catch (e) {
-		                            if (e.message != "EndIterative") throw e;
-		                        }
-		                        if (!checkOK) return;
-		                    }
-							let list = []
-							this.tableDataAlert.forEach((e) => {
-							    let obj = this.deepClone(this.formAlert)
-							    console.log(obj.AuditUserId,"AuditUserId")
-							    list.push(Object.assign({}, e, obj))
-							})
-							
 		                    var self = this;         //默认就是form Data
 		                    top.learun.loading(true, "正在加载数据");
 		                    top.learun.gxhttpAsync('POST', `/PerFormance/AppraisalInfo/SaveList`, { __RequestVerificationToken: token, entity: list }, function (res) {
@@ -142,14 +128,14 @@ var vm = new Vue({
 		            })
 					
 					}
-					*/
 					
-			/*	export1() {
+					
+				export1() {
 					var queryJson = JSON.stringify(this.formSearch);
 					location.href = top.$.rootUrl + `/PerFormance/AppraisalInfo/Export?queryJson=${queryJson}`;
-				},*/
+				},
 		
-		/*        //删除
+		        //删除
 		        async del(row) {
 		            let con = await this.$confirm("确认删除该数据吗？", "提示", {
 		                confirmButtonText: "确定",
@@ -173,7 +159,7 @@ var vm = new Vue({
 		            } else {
 		                //右上角取消 或者 取消按钮
 		            }
-		        },*/
+		        },
         
 
     },

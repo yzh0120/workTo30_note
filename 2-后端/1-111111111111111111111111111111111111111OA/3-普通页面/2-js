@@ -18,6 +18,17 @@ Vue.filter("formatDate", function (time) {
 	}
 	return date;
 })
+
+Vue.filter("formatAcc", function (val) {
+	if (val) {
+		val = val + ""
+		let reg = new RegExp(`(.{4})`, 'g')
+		return val.replace(reg, "$1 ")
+	} else {
+		return ""
+	}
+})
+
 Vue.http.headers.common.Authorization = 'Bearer ' + top.$.accessToken;
 var vm = new Vue({
 	el: "#TuiFeiDetail",

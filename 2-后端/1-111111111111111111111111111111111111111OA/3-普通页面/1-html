@@ -32,9 +32,6 @@
 
 @Html.AppendJsFile("/Areas/GX_OAModule/Views/BusinessAcceptance/Mixins.js")
 
-@Html.Partial("~/Areas/EleGuarantee/Views/EleGuarantee/TuiFeiAudit.cshtml")
-@Html.AppendJsFile("/Areas/EleGuarantee/Views/EleGuarantee/TuiFeiAudit.js")
-
 
 @Html.Partial("/Areas/Guarantee/Views/Components/BasePager.cshtml")
 @Html.AppendJsFile("/Areas/Guarantee/Views/Components/BasePager.js")

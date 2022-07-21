@@ -1,5 +1,5 @@
 
-<filelist :projectid="info.projectid" :uploadlist="uploadlist"></filelist>
+<filelist :projectid="form.Id" :uploadlist="uploadlist" v-if="form.Id"></filelist>
 @Html.Partial("/Areas/Guarantee/Views/Components/FileList.cshtml")
 @Html.AppendJsFile("/Areas/Guarantee/Views/Components/FileList.js")
 
