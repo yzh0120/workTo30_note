@@ -77,6 +77,17 @@
 		<div style="height: 60vh; overflow: auto;">
 			<el-form ref="formAlert" :model="formAlert" label-width="180px" v-if="dialogVisible"  style="width:98%">
 					<el-row :gutter="20">
+					
+							<!--
+							<el-col :span="8" :md="8" :sm="12" :xs="24">
+								<el-form-item label="企业名称：" prop="companyName" :rules="{ required: true, message: '请输入企业名称', trigger: 'blur' }">
+									<el-input v-model.trim="form.companyName" placeholder="请输入企业名称" @*v-on:change="companyChange"*@>
+										<el-button v-on:click="searchBaseInfo" style="background:#409EFF;color:#fff;" slot="append">查询</el-button>
+									</el-input>
+								</el-form-item>
+							</el-col>
+							-->
+					
 						<el-col :span="12">
 							<el-form-item label="" prop="" :rules="[{required:true,message:'不能为空',trigger:'blur'},{validator:this.positivenumberpoint,trigger:'blur'}]">
 								<el-input v-model="formAlert.input" placeholder="请输入内容"></el-input>
@@ -122,3 +133,5 @@
 @*@Html.AppendCssFile("/Areas/Guarantee/Views/GuaranteeLyProject/Audit.css")*@
 
 @Html.AppendJsFile("/Areas/Guarantee/Views/GuaranteeStatistical/ChannelInfo.js")
+
+
