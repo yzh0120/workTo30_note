@@ -12,22 +12,22 @@
  
  
 getFile(taskName) {
-			this.$http.get("/GX_OAModule/Annexes/GetAnnexesFileList?proId=" + this.uuid + "&taskName=" + taskName).then(res => {
-				var result = res.data;
-				if (result.code == 200) {
-					this.uploadobj.detail = result.data;
-				}
-			})
-		},
-		upLoadSuccess(res, taskName) {
-			console.log(res, taskName,"res, taskName")
-			if (res.code == 200) {
-				this.$message.success(res.data.F_FileName + "上传成功！");
-				this.getFile(taskName)
-			} else {
-				this.$message.error(res.info)
-			}
-		},
+	this.$http.get("/GX_OAModule/Annexes/GetAnnexesFileList?proId=" + this.uuid + "&taskName=" + taskName).then(res => {
+		var result = res.data;
+		if (result.code == 200) {
+			this.uploadobj.detail = result.data;
+		}
+	})
+},
+upLoadSuccess(res, taskName) {
+	console.log(res, taskName,"res, taskName")
+	if (res.code == 200) {
+		this.$message.success(res.data.F_FileName + "上传成功！");
+		this.getFile(taskName)
+	} else {
+		this.$message.error(res.info)
+	}
+},
  --------------------------------------
  <fileListshow :arr="item.detail"></fileListshow>
 @Html.Partial("/Areas/Guarantee/Views/Components/FileListShow.cshtml")

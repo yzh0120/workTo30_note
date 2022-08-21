@@ -79,7 +79,7 @@
 					<el-row :gutter="20">
 					
 							<!--
-							<el-col :span="8" :md="8" :sm="12" :xs="24">
+							<el-col :span="12">
 								<el-form-item label="企业名称：" prop="companyName" :rules="{ required: true, message: '请输入企业名称', trigger: 'blur' }">
 									<el-input v-model.trim="form.companyName" placeholder="请输入企业名称" @*v-on:change="companyChange"*@>
 										<el-button v-on:click="searchBaseInfo" style="background:#409EFF;color:#fff;" slot="append">查询</el-button>
