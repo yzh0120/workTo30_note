@@ -10,7 +10,7 @@
 <el-form ref="form" :model="form" label-width="120px">
   <el-row :gutter="20">
 	<el-col :span="12">
-	  <el-form-item label="项目编号" prop="serialNumber" :rules="[{ required: true, message: '此项不能为空', trigger: 'blur' }]">
+	  <el-form-item label="项目编号" prop="serialNumber" :rules="[{ required: true, message: '此项不能为空', trigger: 'blur' },]">
 		<el-input  v-model="form.serialNumber"></el-input>
 	  </el-form-item>
 	</el-col>
@@ -33,7 +33,10 @@
 
 	</template>
 </el-input>
--------------------------------------------------------
+-----------------------------------------------------------------------------------------------正则
+, { validator: $validator.positivenumberpoint, trigger: ['blur'] }
+  { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
+-------------------------------------------------------校验
 this.$refs[formName].validate((valid) => {
           if (valid) {
             alert('submit!');
@@ -42,3 +45,31 @@ this.$refs[formName].validate((valid) => {
             return false;
           }
         });
+-------------------------------------------------------多选
+@checkbox-change="checkboxChange" @checkbox-all="checkboxChange"
+  {
+            type: "checkbox",
+            width: "60px",
+          },
+checkboxChange({ records }) {
+      this.records = records.map((e) => e.id).join(",");
+    },
+------------------------------------------------------------------
+ for (const key in data) {
+            const val = data[key];
+            if (
+              key.indexOf("ARatio") > -1 ||
+              key.indexOf("BRatio") > -1 ||
+              key.indexOf("CRatio") > -1
+            ) {
+              if (val == "" || val === null) {
+                val = 0;
+              }
+              count += Number(val);
+            }
+          }
+
+          if (count != 100) {
+            this.$message.warning("ABC绩效占比之和必须等于100!");
+            return;
+          }
