@@ -1,0 +1,24 @@
+<el-select v-model="form.RoleBId" style="width:100%;" filterable clearable placeholder="请选择团队或者个人">
+			<el-option v-for="(item,index) in userList" :key="index" :label="item.AuditUserName" :value="item.Id">
+				<span style="float: left">{{ item.AuditUserName }}</span>
+			</el-option>
+		</el-select>
+		
+		-------------------------------------
+		
+ getUserList() {
+            var self = this;         //默认就是form Data
+            top.learun.gxhttpAsync('GET', `/LR_OrganizationModule/User/GetAllUserList`, {  }, function (res) {
+
+                if (res.code == 200) {
+                    var data = res.data;
+                    data.forEach(item => {
+                        item.Id = item.F_UserId
+                        item.AuditUserName = item.F_RealName
+                    })
+                    self.userList = self.userList.concat(data);
+                } else {
+                    self.$message.error(res.info)
+                }
+            });
+        },

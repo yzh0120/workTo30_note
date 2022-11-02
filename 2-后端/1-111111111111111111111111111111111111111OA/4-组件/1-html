@@ -5,7 +5,9 @@
 </script>
 
 
-@Html.Partial("~/Areas/Guarantee/Views/GuaranteeLyProject/ProcessComponent/Components/TbFlow/CwcsAudit.cshtml")
-@Html.AppendJsFile("/Areas/Guarantee/Views/GuaranteeLyProject/ProcessComponent/Components/TbFlow/CwcsAudit.js")
+@Html.Partial("~/Areas/Guarantee/Views/GuaranteeLyProject/ProcessComponent/CwcsAudit.cshtml")
+@Html.AppendJsFile("/Areas/Guarantee/Views/GuaranteeLyProject/ProcessComponent/CwcsAudit.js")
 
 
+@Html.Partial("~/Areas/PerFormance/Views/RiskCheck/Form.cshtml")
+@Html.AppendJsFile("/Areas/PerFormance/Views/RiskCheck/Form.js")
