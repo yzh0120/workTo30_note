@@ -1,0 +1,162 @@
+var id = request('id');//id
+var token;
+var bootstrap = function ($, learun) {
+	"use strict";
+	token = $.lrToken;
+}
+
+//格式金额
+Vue.filter("formatMoney", function (s) {
+	s = parseFloat((s + "").replace(/[^\d\.-]/g, "")).toFixed(2) + ""; //n为小数点后保留小数位
+	var l = s.split(".")[0].split("").reverse(),
+		r = s.split(".")[1],
+		t = "";
+	for (let i = 0; i < l.length; i++) {
+		t += l[i] + ((i + 1) % 3 == 0 && (i + 1) != l.length ? "," : "");
+	}
+	return t.split("").reverse().join("") + "." + r;
+})
+//格式时间
+Vue.filter("formatDate", function (time) {
+	if (typeof (time) == "undefined" || time == "" || time == null) {
+		return "";
+	}
+	var date = time.replace(/ 0:00:00/g, '').replace(/ 00:00:00/g, '').replace(/T00:00:00/g, '');
+	if (date.length > 10) {
+		date = date.substring(0, 10);
+	}
+	if (date == "0001-01-01") {
+		date = "";
+	}
+	return date;
+})
+//银行格式
+Vue.filter("formatAcc", function (val) {
+	if (val) {
+		val = val + ""
+		let reg = new RegExp(`(.{4})`, 'g')
+		return val.replace(reg, "$1 ")
+	} else {
+		return ""
+	}
+})
+
+Vue.http.headers.common.Authorization = 'Bearer ' + top.$.accessToken;
+var vm = new Vue({
+	el: "#New_Channel",
+	mixins: [mixins],
+	data() {
+		return {
+			form: {
+				year: '',
+				quarter: '',
+				month: '',
+				monthEnd: '',
+			},
+			//年份下拉框
+			opYear: [
+			],
+			//季度下拉框
+			opQuarter: [
+				{ value: 1, label: '第一季度' },
+				{ value: 2, label: '第二季度' },
+				{ value: 3, label: '第三季度' },
+				{ value: 4, label: '第四季度' }
+			],
+			//开始月份下拉框
+			opMonth: [
+				{ value: 1 },
+				{ value: 2 },
+				{ value: 3 },
+				{ value: 4 },
+				{ value: 5 },
+				{ value: 6 },
+				{ value: 7 },
+				{ value: 8 },
+				{ value: 9 },
+				{ value: 10 },
+				{ value: 11 },
+				{ value: 12 }
+			],
+			//结束月份下拉框
+			opMonthEnd: [],
+			//季度禁用
+			quarterDisabled: false,
+			//月份禁用
+			monthDisabled: false,
+			tabsActiveName:"0",
+			tableData_channel: [],
+			tableData_channel_loading: [],
+			//分页
+			pagerData: {
+				pageNo: 1, //第一页
+				pageSize: 20, //每页显示20张
+				total: 0, //总数
+			},
+		}
+	},
+	mounted() {
+		/*获取年份*/
+		this.getopYear();
+	},
+	methods: {
+
+		/*获取年份*/
+		getopYear() {
+			let num = new Date().getFullYear().toString();
+			let arr = [];
+			for (let i = 2010; i <= num; i++) {
+				arr.push(i);
+			}
+			this.opYear = arr.reverse();
+		},
+		/*年份改变*/
+		yearChange() {
+			this.quarterDisabled = false;
+			this.monthDisabled = false;
+			this.form.quarter = "";
+			this.form.month = "";
+			this.form.monthEnd = ""
+		},
+		//月份下拉
+		month_select_change() {
+			this.form.monthEnd = null
+		},
+		//筛选框
+		search() {
+			this.getData()
+		},
+		//重置
+		resetForm(formName) {
+			for (let key of Object.keys(this.form)) {
+				this.form[key] = ''
+			}
+		},
+		//获取数据
+		getData() {
+		},
+		/*tabs切换事件*/
+		handleClick() {
+			/*this.tableData = []*/
+		},
+	},
+	watch: {
+		form: {
+			handler(newVal, oldVal) {
+				this.form.quarter ? this.monthDisabled = true : this.monthDisabled = false
+				this.form.month ? this.quarterDisabled = true : this.quarterDisabled = false
+			},
+			deep: true
+		},
+		"form.month": {
+			handler(newVal, oldVal) {
+				this.opMonthEnd = []
+				let num = this.form.month
+				let start = 12 - num;
+				for (let i = 0; i <= start; i++) {
+					this.opMonthEnd.push({ value: num + i })
+				}
+			}
+		}
+	}
+})

@@ -1,3 +1,5 @@
+Vue.http.headers.common.Authorization = 'Bearer ' + top.$.accessToken;
+
 Vue.component('tbaudit', {
     template: `#tbaudit`,
     props: {
@@ -6,11 +8,11 @@ Vue.component('tbaudit', {
 				type: Object,
 				default: () => { },
 			},
-			// 当前流程集合
-			tasklist: {
-				type: Array,
+			// 当前流程对象
+			taskinfo: {
+				type: Object,
 				default: () => {
-					return []
+					return {}
 				},
 			},
 },

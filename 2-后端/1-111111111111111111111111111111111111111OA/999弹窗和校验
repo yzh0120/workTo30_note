@@ -12,3 +12,8 @@
 
 
 { validator: self.$validator.numAndABC, trigger: ["blur","change"] }
+
+
+
+
+top.$.accessToken
