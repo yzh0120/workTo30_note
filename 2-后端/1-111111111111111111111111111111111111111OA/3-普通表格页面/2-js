@@ -84,7 +84,7 @@ var vm = new Vue({
 			quarterDisabled: false,
 			//月份禁用
 			monthDisabled: false,
-			tabsActiveName:"0",
+			tabsActiveName:"1",
 			tableData_channel: [],
 			tableData_channel_loading: [],
 			//分页

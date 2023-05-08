@@ -132,6 +132,12 @@
 @Html.AppendJsFile("/Areas/Guarantee/Views/Components/BasePager.js")
 @*@Html.AppendCssFile("/Areas/Guarantee/Views/GuaranteeLyProject/Audit.css")*@
 
+
+
+<link href="~/Content/v-echarts/style.min.css" rel="stylesheet" />
+<script src="~/Content/v-echarts/echarts.min.js"></script>
+<script src="~/Content/v-echarts/index.min.js"></script>
+
 @Html.AppendJsFile("/Areas/Guarantee/Views/GuaranteeStatistical/ChannelInfo.js")
 
 
