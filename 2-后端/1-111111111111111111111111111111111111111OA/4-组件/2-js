@@ -6,7 +6,9 @@ Vue.component('tbaudit', {
 			//主表
 			bhdata: {
 				type: Object,
-				default: () => { },
+				default: () => {
+					return {}
+				},
 			},
 			// 当前流程对象
 			taskinfo: {
@@ -15,6 +17,11 @@ Vue.component('tbaudit', {
 					return {}
 				},
 			},
+			  //是否历史
+			disabled: {
+				type: Boolean,
+				default: false
+			}
 },
     data() {
         return {
