@@ -19,3 +19,19 @@ modules： 模块拆分
 this.$state.state.a.userinfo
 
 this.$state.commit("a/afn",params)
+
+/*
+
+*/ 
+
+import { mapState,mapMutations ,mapActions,mapGetters } from "vuex";
+
+
+
+methods:{
+  ...mapMUtations(['add','reduce'])
+},
+computed:{
+...mapState(['count])
+}	
+add(5)
